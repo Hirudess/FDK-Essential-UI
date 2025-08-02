@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace FDK.Core
+{
+    [System.Serializable]
+    public class CurrencySystem
+    {
+        private Dictionary<CurrencyType, int> _currencyWallet = new Dictionary<CurrencyType, int>();
+        public event Action<CurrencyType, int> OnCurrencyChanged;
+
+        public CurrencySystem()
+        {
+            foreach (CurrencyType type in Enum.GetValues(typeof(CurrencyType)))
+            {
+                _currencyWallet[type] = 0;
+            }
+        }
+
+        public void AddCurrency(CurrencyType type, int amount)
+        {
+            if (amount < 0)
+            {
+                Debug.LogWarning($"Tried to add negative currency! Use {nameof(RemoveCurrency)} instead.");
+                return;
+            }
+
+            _currencyWallet[type] += amount;
+            OnCurrencyChanged?.Invoke(type, _currencyWallet[type]);
+        }
+
+        public bool RemoveCurrency(CurrencyType type, int amount)
+        {
+            if (amount < 0)
+            {
+                Debug.LogWarning("Cannot remove negative currency!");
+                return false;
+            }
+
+            if (_currencyWallet[type] < amount)
+            {
+                Debug.LogWarning($"Not enough {type}!");
+                return false;
+            }
+
+            _currencyWallet[type] -= amount;
+            OnCurrencyChanged?.Invoke(type, _currencyWallet[type]);
+            return true;
+        }
+
+        public bool HasEnough(CurrencyType type, int amount)
+        {
+            return _currencyWallet[type] >= amount;
+        }
+
+        public int GetCurrencyAmount(CurrencyType type)
+        {
+            return _currencyWallet[type];
+        }
+
+        public Dictionary<CurrencyType, int> GetSaveData() => new Dictionary<CurrencyType, int>(_currencyWallet);
+        public void LoadSaveData(Dictionary<CurrencyType, int> saveData) => _currencyWallet = new Dictionary<CurrencyType, int>(saveData);
+    }
+
+    public enum CurrencyType
+    {
+        Gold,
+        Gems,
+        Souls,
+        Premium,
+        // Add more as needed
+    }
+}

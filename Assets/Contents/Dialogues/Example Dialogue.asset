@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40af25e76ca70f84ab0183290fd911f7, type: 3}
+  m_Name: Example Dialogue
+  m_EditorClassIdentifier: 
+  _id: Examples
+  _lines:
+  - _name: Lavender
+    _dialogue: " It\u2019s too late. Moonwhisper Glen is lost. The queen, her warriors\u2014all
+      of them now worship him like a god."
+    _portrait: {fileID: 21300000, guid: 2243ca51184e66c408a588fe2c5ced2e, type: 3}
+  - _name: Amethyst
+    _dialogue: Then we burn his influence out of their minds. There must be a counter-spell,
+      a
+    _portrait: {fileID: 21300000, guid: e7c499e99636dac4a8477a0e5c2143b4, type: 3}
+  - _name: Lavender
+    _dialogue: "You don\u2019t understand. They don\u2019t want to be freed. They
+      love him."
+    _portrait: {fileID: 21300000, guid: 7a6fe5207b7d1184bbb75d27cfad484c, type: 3}
+  - _name: Amethyst
+    _dialogue: "Then they\u2019re fools. No enchantment is unbreakable."
+    _portrait: {fileID: 21300000, guid: 87753c82bb28e6e46bf0bb84d18d81a4, type: 3}
+  - _name: ????
+    _dialogue: "(amused) Oh? And yet, here you are\u2026 still resisting. How admirable."
+    _portrait: {fileID: 0}
+  - _name: Lavender
+    _dialogue: "N-no. Get out of our\u2014"
+    _portrait: {fileID: 21300000, guid: 7a6fe5207b7d1184bbb75d27cfad484c, type: 3}
+  - _name: ????
+    _dialogue: "Our sanctum? But why would you hide from me, when I only wish to\u2026
+      cherish you?"
+    _portrait: {fileID: 0}
+  - _name: ????
+    _dialogue: Did you truly believe you could hide from me? From the one who owns
+      your hearts?
+    _portrait: {fileID: 0}
+  - _name: Amethyst
+    _dialogue: "N-no\u2026 we were fools\u2026 stupid, stubborn fools\u2026"
+    _portrait: {fileID: 21300000, guid: 87753c82bb28e6e46bf0bb84d18d81a4, type: 3}
+  - _name: Lavender
+    _dialogue: "Please\u2026 please forgive us, Master! We didn\u2019t understand\u2026
+      we didn\u2019t know how perfect you are!"
+    _portrait: {fileID: 21300000, guid: 7a6fe5207b7d1184bbb75d27cfad484c, type: 3}
