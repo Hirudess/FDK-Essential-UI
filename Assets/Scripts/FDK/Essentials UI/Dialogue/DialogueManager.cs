@@ -81,6 +81,7 @@ namespace FDK.Dialogue
             var currentDialogue = Dialogue.Peek();
             if (currentDialogue == null) return;
 
+            _dialogueBox.Show();
             _dialogueBox.PlayDialogue(currentDialogue);
         }
 
