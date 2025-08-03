@@ -35,6 +35,8 @@ namespace FDK.Notification
 
         public override void Hide()
         {
+            CanvasGroup.Hide();
+            IsShowing = false;
             //CanvasGroup.DOFade(0, _fadeSpeed).onComplete = () =>
             //{
             //    base.Hide();
