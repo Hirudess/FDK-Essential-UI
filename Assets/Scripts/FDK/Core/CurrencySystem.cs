@@ -1,11 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 namespace FDK.Core
 {
+    public interface ICurrencySystem
+    {
+        event Action<CurrencyType, int> OnCurrencyChanged;
+
+        void AddCurrency(CurrencyType type, int amount);
+        int GetCurrencyAmount(CurrencyType type);
+        Dictionary<CurrencyType, int> GetSaveData();
+        bool HasEnough(CurrencyType type, int amount);
+        void LoadSaveData(Dictionary<CurrencyType, int> saveData);
+        bool RemoveCurrency(CurrencyType type, int amount);
+        void RefreshCurrencies();
+    }
+
     [System.Serializable]
-    public class CurrencySystem
+    public class CurrencySystem : ICurrencySystem
     {
         private Dictionary<CurrencyType, int> _currencyWallet = new Dictionary<CurrencyType, int>();
         public event Action<CurrencyType, int> OnCurrencyChanged;
@@ -59,6 +73,14 @@ namespace FDK.Core
             return _currencyWallet[type];
         }
 
+        public void RefreshCurrencies()
+        {
+            foreach (var currency in _currencyWallet)
+            {
+                OnCurrencyChanged?.Invoke(currency.Key, currency.Value);
+            }
+        }
+
         public Dictionary<CurrencyType, int> GetSaveData() => new Dictionary<CurrencyType, int>(_currencyWallet);
         public void LoadSaveData(Dictionary<CurrencyType, int> saveData) => _currencyWallet = new Dictionary<CurrencyType, int>(saveData);
     }
@@ -69,6 +91,5 @@ namespace FDK.Core
         Gems,
         Souls,
         Premium,
-        // Add more as needed
     }
 }
