@@ -1,6 +1,5 @@
 ﻿using FDK.Notification;
 using System.Collections.Generic;
-using Unity;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -48,12 +47,10 @@ namespace FDK.Currency
         {
             _notificationService = notificationService;
             _randomNotification.onClick.AddListener(PickOneNameInRandom);
-            Debug.LogError("RANDOM INJECT");
         }
 
         private void PickOneNameInRandom()
         {
-            Debug.LogError("RANDOM");
             var randomIdx = Random.Range(0, _elfNames.Count - 1);
             var name = _elfNames[randomIdx];
             var text = $"{name} Joined Party.";
