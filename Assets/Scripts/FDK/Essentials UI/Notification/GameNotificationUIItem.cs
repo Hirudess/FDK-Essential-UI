@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using FDK.UI;
 using UnityEngine;
 
@@ -35,14 +36,12 @@ namespace FDK.Notification
 
         public override void Hide()
         {
-            CanvasGroup.Hide();
-            IsShowing = false;
-            //CanvasGroup.DOFade(0, _fadeSpeed).onComplete = () =>
-            //{
-            //    base.Hide();
-            //    CanvasGroup.Hide();
-            //    IsShowing = false;
-            //};
+            CanvasGroup.DOFade(0, _fadeSpeed).onComplete = () =>
+            {
+                base.Hide();
+                CanvasGroup.Hide();
+                IsShowing = false;
+            };
         }
     }
 }
