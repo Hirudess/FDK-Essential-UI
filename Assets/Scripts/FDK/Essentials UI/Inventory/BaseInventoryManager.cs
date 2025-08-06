@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using FDK.Core.GameData;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace FDK.Inventory
 {
-    public abstract class InventoryBase<T> : MonoBehaviour where T : class
+    public abstract class InventoryBase<T> : MonoBehaviour where T : BaseItemGameData
     {
         protected readonly Dictionary<string, T> items = new Dictionary<string, T>();
 

@@ -48,3 +48,6 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _gameDataCollectionRef:
+    ItemCollection: {fileID: 4900000, guid: df46f19c0be52354baa53d68290a7720, type: 3}
+    CharacterCollection: {fileID: 4900000, guid: 0302873c96549ee48983ea673669049c, type: 3}
