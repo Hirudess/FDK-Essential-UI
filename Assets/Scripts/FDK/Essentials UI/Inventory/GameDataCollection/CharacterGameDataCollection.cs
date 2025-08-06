@@ -5,6 +5,6 @@ namespace FDK.Core.GameData
     [System.Serializable]
     public class CharacterGameDataCollection
     {
-        public List<CharacterGameData> Items;
+        public List<CharacterGameData> Characters;
     }
 }

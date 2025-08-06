@@ -1,10 +1,9 @@
 ﻿using FDK.Core.GameData;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace FDK.Inventory
 {
-    public abstract class InventoryBase<T> : MonoBehaviour where T : BaseItemGameData
+    public abstract class BaseInventory<T> where T : BaseItemGameData
     {
         protected readonly Dictionary<string, T> items = new Dictionary<string, T>();
 
@@ -12,15 +11,14 @@ namespace FDK.Inventory
         public int CurrentCount => items.Count;
         public bool IsFull => CurrentCount >= Capacity;
 
-        public virtual bool AddItem(string itemId, T item)
+        public virtual void AddItem(string itemId, T item)
         {
             if (string.IsNullOrEmpty(itemId) || item == null || IsFull || items.ContainsKey(itemId))
             {
-                return false;
+                return;
             }
 
             items.Add(itemId, item);
-            return true;
         }
 
         public virtual bool RemoveItem(string itemId)

@@ -1,6 +1,7 @@
 using FDK.Core;
 using FDK.Dialogue;
 using FDK.GameData;
+using FDK.Inventory;
 using FDK.Notification;
 using UnityEngine;
 using VContainer;
@@ -15,6 +16,8 @@ public class ProjectRootLifetimeScope : LifetimeScope
         builder.RegisterInstance(_gameDataCollectionRef);
         builder.RegisterEntryPoint<GameDataCollectionService>(Lifetime.Singleton).As<IGameDataCollectionService>();
         builder.RegisterEntryPoint<CurrencySystem>(Lifetime.Singleton).As<ICurrencySystem>();
+        builder.RegisterEntryPoint<PlayerItemInventoryService>(Lifetime.Singleton).As<IPlayerItemInventoryService>();
+        builder.RegisterEntryPoint<PlayerCharacterInventoryService>(Lifetime.Singleton).As<IPlayerCharacterInventoryService>();
 
         builder.RegisterEntryPoint<DialogueService>(Lifetime.Singleton).As<IDialogueService>();
         builder.RegisterEntryPoint<GlobalNotificationService>(Lifetime.Singleton).As<IGlobalNotificationService>();
