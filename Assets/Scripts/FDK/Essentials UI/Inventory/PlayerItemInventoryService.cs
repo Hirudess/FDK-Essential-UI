@@ -44,10 +44,5 @@ namespace FDK.Inventory
         {
             return _itemGameDataCollection.Items.FirstOrDefault(x => x.Id == id);
         }
-
-        public bool CanAddItem(string id)
-        {
-            return CanAddItem(id,)
-        }
     }
 }

@@ -1,9 +1,9 @@
-using Assets.Scripts.FDK.Essentials_UI.Shop;
 using FDK.Core;
 using FDK.Dialogue;
 using FDK.GameData;
 using FDK.Inventory;
 using FDK.Notification;
+using FDK.Shop;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
