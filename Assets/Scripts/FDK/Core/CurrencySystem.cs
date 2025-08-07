@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
 
 namespace FDK.Core
@@ -23,6 +22,9 @@ namespace FDK.Core
     {
         private Dictionary<CurrencyType, int> _currencyWallet = new Dictionary<CurrencyType, int>();
         public event Action<CurrencyType, int> OnCurrencyChanged;
+
+        public Dictionary<CurrencyType, int> GetSaveData() => new Dictionary<CurrencyType, int>(_currencyWallet);
+        public void LoadSaveData(Dictionary<CurrencyType, int> saveData) => _currencyWallet = new Dictionary<CurrencyType, int>(saveData);
 
         public CurrencySystem()
         {
@@ -80,9 +82,6 @@ namespace FDK.Core
                 OnCurrencyChanged?.Invoke(currency.Key, currency.Value);
             }
         }
-
-        public Dictionary<CurrencyType, int> GetSaveData() => new Dictionary<CurrencyType, int>(_currencyWallet);
-        public void LoadSaveData(Dictionary<CurrencyType, int> saveData) => _currencyWallet = new Dictionary<CurrencyType, int>(saveData);
     }
 
     public enum CurrencyType

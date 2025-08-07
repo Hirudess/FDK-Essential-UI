@@ -4,10 +4,8 @@ using UnityEngine.Scripting;
 
 namespace FDK.Inventory
 {
-    public interface IPlayerItemInventoryService
+    public interface IPlayerItemInventoryService : IBaseInventory<ItemGameData>
     {
-        int Capacity { get; }
-
         void AddItem(string id);
         void Release(string id);
     }
@@ -45,6 +43,11 @@ namespace FDK.Inventory
         private ItemGameData GetItemData(string id)
         {
             return _itemGameDataCollection.Items.FirstOrDefault(x => x.Id == id);
+        }
+
+        public bool CanAddItem(string id)
+        {
+            return CanAddItem(id,)
         }
     }
 }

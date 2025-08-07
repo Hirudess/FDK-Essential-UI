@@ -1,0 +1,77 @@
+[
+    {
+        "Id": "potion_001",
+        "Name": "Health Potion",
+        "Description": "Restores 50 HP instantly"
+    },
+    {
+        "Id": "fruit_001",
+        "Name": "Apple",
+        "Description": "Restores 10 HP over time"
+    },
+    {
+        "Id": "potion_002",
+        "Name": "Mana Potion",
+        "Description": "Restores 30 MP instantly"
+    },
+    {
+        "Id": "fruit_002",
+        "Name": "Banana",
+        "Description": "Boosts stamina for 30 seconds"
+    },
+    {
+        "Id": "potion_003",
+        "Name": "Stamina Elixir",
+        "Description": "Restores full stamina"
+    },
+    {
+        "Id": "fruit_003",
+        "Name": "Orange",
+        "Description": "Cleanses minor debuffs"
+    },
+    {
+        "Id": "potion_004",
+        "Name": "Antidote",
+        "Description": "Cures poison effects"
+    },
+    {
+        "Id": "fruit_004",
+        "Name": "Grapes",
+        "Description": "Restores 5 HP per grape (bunch of 6)"
+    },
+    {
+        "Id": "potion_005",
+        "Name": "Speed Potion",
+        "Description": "Increases movement speed by 20% for 1 minute"
+    },
+    {
+        "Id": "fruit_005",
+        "Name": "Strawberry",
+        "Description": "Small HP boost with happy effect"
+    },
+    {
+        "Id": "potion_006",
+        "Name": "Invisibility Potion",
+        "Description": "Makes you invisible for 45 seconds"
+    },
+    {
+        "Id": "fruit_006",
+        "Name": "Pineapple",
+        "Description": "Restores HP and gives temporary defense boost"
+    },
+    {
+        "Id": "potion_007",
+        "Name": "Fire Resistance Potion",
+        "Description": "Reduces fire damage by 50% for 2 minutes"
+    },
+    {
+        "Id": "fruit_007",
+        "Name": "Watermelon",
+        "Description": "Large HP restore, but heavy to carry"
+    },
+    {
+        "Id": "potion_008",
+        "Name": "XP Boost Potion",
+        "Description": "Grants +20% XP gain for 1 hour"
+    }
+]

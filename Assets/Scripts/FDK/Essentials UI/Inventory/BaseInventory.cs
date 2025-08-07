@@ -3,7 +3,21 @@ using System.Collections.Generic;
 
 namespace FDK.Inventory
 {
-    public abstract class BaseInventory<T> where T : BaseItemGameData
+    public interface IBaseInventory<T> where T : BaseItemGameData
+    {
+        int Capacity { get; }
+        int CurrentCount { get; }
+        bool IsFull { get; }
+
+        void AddItem(string itemId, T item);
+        void Clear();
+        IEnumerable<KeyValuePair<string, T>> GetAllItems();
+        T GetItem(string itemId);
+        bool HasItem(string itemId);
+        bool RemoveItem(string itemId);
+    }
+
+    public abstract class BaseInventory<T> : IBaseInventory<T> where T : BaseItemGameData
     {
         protected readonly Dictionary<string, T> items = new Dictionary<string, T>();
 
@@ -59,6 +73,7 @@ namespace FDK.Inventory
                 yield return item;
             }
         }
+
 
         protected virtual bool CanAddItem(string itemId, T item)
         {

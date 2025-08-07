@@ -1,3 +1,4 @@
+using Assets.Scripts.FDK.Essentials_UI.Shop;
 using FDK.Core;
 using FDK.Dialogue;
 using FDK.GameData;
@@ -18,6 +19,7 @@ public class ProjectRootLifetimeScope : LifetimeScope
         builder.RegisterEntryPoint<CurrencySystem>(Lifetime.Singleton).As<ICurrencySystem>();
         builder.RegisterEntryPoint<PlayerItemInventoryService>(Lifetime.Singleton).As<IPlayerItemInventoryService>();
         builder.RegisterEntryPoint<PlayerCharacterInventoryService>(Lifetime.Singleton).As<IPlayerCharacterInventoryService>();
+        builder.RegisterEntryPoint<TransactionSystem>(Lifetime.Singleton).As<ITransactionSystem>();
 
         builder.RegisterEntryPoint<DialogueService>(Lifetime.Singleton).As<IDialogueService>();
         builder.RegisterEntryPoint<GlobalNotificationService>(Lifetime.Singleton).As<IGlobalNotificationService>();
