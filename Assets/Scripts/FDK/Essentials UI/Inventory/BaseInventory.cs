@@ -1,5 +1,6 @@
 ﻿using FDK.Core.GameData;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace FDK.Inventory
 {
@@ -12,7 +13,7 @@ namespace FDK.Inventory
         void AddItem(U itemData, int amount);
         void RemoveItem(string itemId, int removedAmount);
         void Clear();
-        IEnumerable<KeyValuePair<string, T>> GetAllItems();
+        Dictionary<string, T> GetAllItems();
         T GetItem(string itemId);
         bool HasItem(string itemId);
     }
@@ -24,6 +25,8 @@ namespace FDK.Inventory
         public virtual int Capacity { get; protected set; } = 20;
         public int CurrentCount => Items.Count;
         public bool IsFull => CurrentCount >= Capacity;
+
+        public UnityEvent OnInventoryUpdated = new();
 
         public virtual void AddItem(U itemData, int amount)
         {
@@ -94,12 +97,9 @@ namespace FDK.Inventory
             Items.Clear();
         }
 
-        public virtual IEnumerable<KeyValuePair<string, T>> GetAllItems()
+        public virtual Dictionary<string, T> GetAllItems()
         {
-            foreach (var item in Items)
-            {
-                yield return item;
-            }
+            return Items;
         }
 
         protected virtual bool CanAddItem(string itemId, T item)

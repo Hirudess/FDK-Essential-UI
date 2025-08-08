@@ -75,7 +75,7 @@ namespace FDK.Shop
 
         private ItemGameData GetItem(string itemId)
         {
-            return _gameDataCollectionService.ItemCollection.Items.FirstOrDefault();
+            return _gameDataCollectionService.ItemCollection.Items.FirstOrDefault(x => x.Id == itemId);
         }
     }
 }
