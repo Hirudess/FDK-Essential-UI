@@ -2,11 +2,11 @@
 
 namespace FDK.Inventory
 {
-    public class ItemInventorySlotUiItem : BaseInventorySlotUiItem
+    public class ItemSlotUIItem : BaseInventorySlotUiItem
     {
         public void InitializeUI(Sprite sprite, string amount)
         {
-            _sprite = sprite;
+            _image.sprite = sprite;
             _amount.text = amount;
         }
 

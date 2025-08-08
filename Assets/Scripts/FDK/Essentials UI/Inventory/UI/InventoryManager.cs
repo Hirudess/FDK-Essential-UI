@@ -4,6 +4,7 @@ using VContainer.Unity;
 
 namespace FDK.Inventory
 {
+    [System.Serializable]
     public struct InventoryHudRef
     {
         public ItemInventoryHud ItemInventoryHud;
@@ -16,12 +17,12 @@ namespace FDK.Inventory
 
     public class InventoryManager : IStartable, IDisposable, IInventoryManager
     {
-        private readonly PlayerItemInventoryService _playerItemInventoryService;
+        private readonly IPlayerItemInventoryService _playerItemInventoryService;
         private readonly ItemInventoryHud _itemInventoryHud;
         private bool _disposedValue;
 
         [Preserve]
-        public InventoryManager(PlayerItemInventoryService inventoryService, InventoryHudRef inventoryHudRef)
+        public InventoryManager(IPlayerItemInventoryService inventoryService, InventoryHudRef inventoryHudRef)
         {
             _playerItemInventoryService = inventoryService;
             _itemInventoryHud = inventoryHudRef.ItemInventoryHud;

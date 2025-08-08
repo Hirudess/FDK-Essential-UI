@@ -3,7 +3,7 @@ using FDK.Core.GameData;
 
 namespace FDK.Inventory
 {
-    public class InventorySlotPlayerData<T> : BasePlayerData where T : BaseItemGameData
+    public class BaseSlotPlayerData<T> : BasePlayerData where T : BaseItemGameData
     {
         private const int _maxStack = 20;
 
@@ -12,7 +12,7 @@ namespace FDK.Inventory
 
         public int MaxStack => _maxStack;
 
-        public InventorySlotPlayerData(T gameData, int amount)
+        public BaseSlotPlayerData(T gameData, int amount)
         {
             Item = gameData;
             Amount = amount;

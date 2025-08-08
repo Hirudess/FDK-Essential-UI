@@ -6,10 +6,10 @@ namespace FDK.Inventory
     public class ItemInventoryHud : MonoBehaviour
     {
         [SerializeField]
-        private ItemInventorySlotUiItem _slotPrefab;
-        private Dictionary<string, ItemInventorySlotUiItem> _gameData = new();
+        private ItemSlotUIItem _slotPrefab;
+        private Dictionary<string, ItemSlotUIItem> _gameData = new();
 
-        public void InitializeUI(Dictionary<string, ItemInventorySlotPlayerData> inventoryDict)
+        public void InitializeUI(Dictionary<string, ItemSlotPlayerData> inventoryDict)
         {
             foreach (var kv in inventoryDict)
             {

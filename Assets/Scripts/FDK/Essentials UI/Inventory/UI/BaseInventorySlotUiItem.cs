@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FDK.Inventory
 {
@@ -8,7 +9,7 @@ namespace FDK.Inventory
         [SerializeField]
         protected RectTransform _rectTransform;
         [SerializeField]
-        protected Sprite _sprite;
+        protected Image _image;
         [SerializeField]
         protected TMP_Text _amount;
     }

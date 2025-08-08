@@ -3,21 +3,22 @@ using UnityEngine.Scripting;
 
 namespace FDK.Inventory
 {
-    public interface IPlayerItemInventoryService : IBaseInventory<ItemInventorySlotPlayerData, ItemGameData>
+    public interface IPlayerItemInventoryService : IBaseInventory<ItemSlotPlayerData, ItemGameData>
     {
+
     }
 
-    public class PlayerItemInventoryService : BaseInventory<ItemInventorySlotPlayerData, ItemGameData>, IPlayerItemInventoryService
+    public class PlayerItemInventoryService : BaseInventory<ItemSlotPlayerData, ItemGameData>, IPlayerItemInventoryService
     {
         public override int Capacity => 20;
         [Preserve]
-        public PlayerItemInventoryService(ItemGameDataCollection itemGameDataCollection)
+        public PlayerItemInventoryService()
         {
         }
 
         protected override void CreateAndRegisterSlot(ItemGameData item, int amount)
         {
-            var inventory = new ItemInventorySlotPlayerData(item, amount);
+            var inventory = new ItemSlotPlayerData(item, amount);
             Items.Add(item.Id, inventory);
         }
     }

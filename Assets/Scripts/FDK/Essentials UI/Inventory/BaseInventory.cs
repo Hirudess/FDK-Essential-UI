@@ -4,8 +4,9 @@ using UnityEngine.Events;
 
 namespace FDK.Inventory
 {
-    public interface IBaseInventory<T, U> where T : InventorySlotPlayerData<U> where U : BaseItemGameData
+    public interface IBaseInventory<T, U> where T : BaseSlotPlayerData<U> where U : BaseItemGameData
     {
+        UnityEvent OnInventoryUpdated { get; }
         int Capacity { get; }
         int CurrentCount { get; }
         bool IsFull { get; }
@@ -18,7 +19,7 @@ namespace FDK.Inventory
         bool HasItem(string itemId);
     }
 
-    public abstract class BaseInventory<T, U> : IBaseInventory<T, U> where T : InventorySlotPlayerData<U> where U : BaseItemGameData
+    public abstract class BaseInventory<T, U> : IBaseInventory<T, U> where T : BaseSlotPlayerData<U> where U : BaseItemGameData
     {
         protected readonly Dictionary<string, T> Items = new Dictionary<string, T>();
 
@@ -26,7 +27,7 @@ namespace FDK.Inventory
         public int CurrentCount => Items.Count;
         public bool IsFull => CurrentCount >= Capacity;
 
-        public UnityEvent OnInventoryUpdated = new();
+        public UnityEvent OnInventoryUpdated { get; } = new();
 
         public virtual void AddItem(U itemData, int amount)
         {
