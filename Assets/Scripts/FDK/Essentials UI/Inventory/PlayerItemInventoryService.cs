@@ -1,48 +1,24 @@
 ﻿using FDK.Core.GameData;
-using System.Linq;
 using UnityEngine.Scripting;
 
 namespace FDK.Inventory
 {
-    public interface IPlayerItemInventoryService : IBaseInventory<ItemGameData>
+    public interface IPlayerItemInventoryService : IBaseInventory<ItemInventorySlotPlayerData, ItemGameData>
     {
-        void AddItem(string id);
-        void Release(string id);
     }
 
-    public class PlayerItemInventoryService : BaseInventory<ItemGameData>, IPlayerItemInventoryService
+    public class PlayerItemInventoryService : BaseInventory<ItemInventorySlotPlayerData, ItemGameData>, IPlayerItemInventoryService
     {
         public override int Capacity => 20;
-
-        private readonly ItemGameDataCollection _itemGameDataCollection;
         [Preserve]
         public PlayerItemInventoryService(ItemGameDataCollection itemGameDataCollection)
         {
-            _itemGameDataCollection = itemGameDataCollection;
         }
 
-        public void AddItem(string id)
+        protected override void CreateAndRegisterSlot(ItemGameData item, int amount)
         {
-            var item = GetItemData(id);
-            if (item == null)
-            {
-                return;
-            }
-
-            base.AddItem(id, item);
-        }
-
-        public void Release(string id)
-        {
-            if (items.ContainsKey(id))
-            {
-                RemoveItem(id);
-            }
-        }
-
-        private ItemGameData GetItemData(string id)
-        {
-            return _itemGameDataCollection.Items.FirstOrDefault(x => x.Id == id);
+            var inventory = new ItemInventorySlotPlayerData(item, amount);
+            Items.Add(item.Id, inventory);
         }
     }
 }

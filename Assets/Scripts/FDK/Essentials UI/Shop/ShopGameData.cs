@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using FDK.Core;
+using System.Collections.Generic;
 
 namespace FDK.Shop
 {
     [System.Serializable]
-    public class ShopGameData
+    public class ShopGameData : BaseGameData
     {
         public ShopVisualData ShopVisualData;
         public List<string> Products;

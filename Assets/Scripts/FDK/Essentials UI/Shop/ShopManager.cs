@@ -22,17 +22,17 @@ namespace FDK.Shop
             _selectedShop = shopGameData;
         }
 
-        private void Buy(string id)
+        private void Buy(string id, int amount)
         {
             if (_selectedShop == null) return;
             if (!_selectedShop.Products.Contains(id)) return;
-            _transactionSystem.Buy(id);
+            _transactionSystem.Buy(id, amount);
         }
 
-        private void Sell(string id)
+        private void Sell(string id, int amount)
         {
             if (_selectedShop == null) return;
-            _transactionSystem.Sell(id);
+            _transactionSystem.Sell(id, amount);
         }
 
         public void Start()

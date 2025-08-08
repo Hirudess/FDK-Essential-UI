@@ -18,7 +18,6 @@ public class ProjectRootLifetimeScope : LifetimeScope
         builder.RegisterEntryPoint<GameDataCollectionService>(Lifetime.Singleton).As<IGameDataCollectionService>();
         builder.RegisterEntryPoint<CurrencySystem>(Lifetime.Singleton).As<ICurrencySystem>();
         builder.RegisterEntryPoint<PlayerItemInventoryService>(Lifetime.Singleton).As<IPlayerItemInventoryService>();
-        builder.RegisterEntryPoint<PlayerCharacterInventoryService>(Lifetime.Singleton).As<IPlayerCharacterInventoryService>();
         builder.RegisterEntryPoint<TransactionSystem>(Lifetime.Singleton).As<ITransactionSystem>();
 
         builder.RegisterEntryPoint<DialogueService>(Lifetime.Singleton).As<IDialogueService>();

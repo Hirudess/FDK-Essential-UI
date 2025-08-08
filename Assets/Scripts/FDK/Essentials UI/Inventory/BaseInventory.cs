@@ -3,84 +3,111 @@ using System.Collections.Generic;
 
 namespace FDK.Inventory
 {
-    public interface IBaseInventory<T> where T : BaseItemGameData
+    public interface IBaseInventory<T, U> where T : InventorySlotPlayerData<U> where U : BaseItemGameData
     {
         int Capacity { get; }
         int CurrentCount { get; }
         bool IsFull { get; }
 
-        void AddItem(string itemId, T item);
+        void AddItem(U itemData, int amount);
+        void RemoveItem(string itemId, int removedAmount);
         void Clear();
         IEnumerable<KeyValuePair<string, T>> GetAllItems();
         T GetItem(string itemId);
         bool HasItem(string itemId);
-        bool RemoveItem(string itemId);
     }
 
-    public abstract class BaseInventory<T> : IBaseInventory<T> where T : BaseItemGameData
+    public abstract class BaseInventory<T, U> : IBaseInventory<T, U> where T : InventorySlotPlayerData<U> where U : BaseItemGameData
     {
-        protected readonly Dictionary<string, T> items = new Dictionary<string, T>();
+        protected readonly Dictionary<string, T> Items = new Dictionary<string, T>();
 
         public virtual int Capacity { get; protected set; } = 20;
-        public int CurrentCount => items.Count;
+        public int CurrentCount => Items.Count;
         public bool IsFull => CurrentCount >= Capacity;
 
-        public virtual void AddItem(string itemId, T item)
+        public virtual void AddItem(U itemData, int amount)
         {
-            if (string.IsNullOrEmpty(itemId) || item == null || IsFull || items.ContainsKey(itemId))
+            var itemId = itemData.Id;
+            if (string.IsNullOrEmpty(itemId) || itemData == null || IsFull)
             {
                 return;
             }
 
-            items.Add(itemId, item);
+            if (Items.ContainsKey(itemId))
+            {
+                var slot = Items[itemId];
+                var exceedMaxStack = slot.Amount + amount > slot.MaxStack;
+                if (exceedMaxStack)
+                {
+                    return;
+                }
+                else
+                {
+                    Items[itemId].Amount += amount;
+                }
+            }
+            else
+            {
+                CreateAndRegisterSlot(itemData, amount);
+            }
         }
 
-        public virtual bool RemoveItem(string itemId)
+        protected virtual void CreateAndRegisterSlot(U item, int amount)
         {
-            if (string.IsNullOrEmpty(itemId) || !items.ContainsKey(itemId))
-            {
-                return false;
-            }
 
-            items.Remove(itemId);
-            return true;
+        }
+
+        public virtual void RemoveItem(string itemId, int removedAmount)
+        {
+            if (string.IsNullOrEmpty(itemId)) return;
+            if (!Items.ContainsKey(itemId)) return;
+
+            var slot = Items[itemId];
+            var hasEnoughtAmount = slot.Amount >= removedAmount;
+            if (hasEnoughtAmount)
+            {
+                slot.Amount -= removedAmount;
+                if (slot.Amount <= 0)
+                {
+                    Items.Remove(itemId);
+                }
+            }
         }
 
         public virtual bool HasItem(string itemId)
         {
-            return !string.IsNullOrEmpty(itemId) && items.ContainsKey(itemId);
+            return !string.IsNullOrEmpty(itemId) && Items.ContainsKey(itemId);
         }
 
         public virtual T GetItem(string itemId)
         {
-            if (string.IsNullOrEmpty(itemId) || !items.ContainsKey(itemId))
+            if (string.IsNullOrEmpty(itemId) || !Items.ContainsKey(itemId))
             {
                 return null;
             }
 
-            return items[itemId];
+            return Items[itemId];
         }
 
         public virtual void Clear()
         {
-            items.Clear();
+            Items.Clear();
         }
 
         public virtual IEnumerable<KeyValuePair<string, T>> GetAllItems()
         {
-            foreach (var item in items)
+            foreach (var item in Items)
             {
                 yield return item;
             }
         }
-
 
         protected virtual bool CanAddItem(string itemId, T item)
         {
             return !string.IsNullOrEmpty(itemId) &&
                    item != null &&
                    !IsFull &&
-                   !items.ContainsKey(itemId);
+                   !Items.ContainsKey(itemId);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace FDK.Shop
 {
     public interface ITransactionSystem
     {
-        void Buy(string itemId);
-        void Sell(string itemId);
+        void Buy(string itemId, int amount);
+        void Sell(string itemId, int amount);
     }
 
     public class TransactionSystem : ITransactionSystem
@@ -22,14 +22,17 @@ namespace FDK.Shop
 
 
         [Preserve]
-        public TransactionSystem(ICurrencySystem currencySystem, IPlayerItemInventoryService playerItemInventoryService, IGameDataCollectionService gameDataCollectionService)
+        public TransactionSystem(
+            ICurrencySystem currencySystem,
+            IPlayerItemInventoryService playerItemInventoryService,
+            IGameDataCollectionService gameDataCollectionService)
         {
             _currencySystem = currencySystem;
             _playerItemInventoryService = playerItemInventoryService;
             _gameDataCollectionService = gameDataCollectionService;
         }
 
-        public void Buy(string itemId)
+        public void Buy(string itemId, int amount)
         {
             var isInventoryFull = _playerItemInventoryService.IsFull;
             if (isInventoryFull) return;
@@ -38,16 +41,15 @@ namespace FDK.Shop
             if (item == null) return;
 
             if (!IsCurrencyEnough(item.Price)) return;
-            CommitBuy(itemId, CurrencyType.Gold, item.Price);
+            CommitBuy(item, amount, CurrencyType.Gold, item.Price);
         }
-
-        private void CommitBuy(string itemId, CurrencyType currency, int price)
+        private void CommitBuy(ItemGameData itemGameData, int amount, CurrencyType currency, int price)
         {
-            _playerItemInventoryService.AddItem(itemId);
+            _playerItemInventoryService.AddItem(itemGameData, amount);
             _currencySystem.RemoveCurrency(currency, price);
         }
 
-        public void Sell(string itemId)
+        public void Sell(string itemId, int amount)
         {
             var itemInPossession = _playerItemInventoryService.HasItem(itemId);
             if (!itemInPossession) return;
@@ -56,12 +58,13 @@ namespace FDK.Shop
             if (item == null) return;
 
             var sellPrice = (int)(Mathf.Floor(item.Price / 2f));
-            CommitSell(itemId, CurrencyType.Gold, sellPrice);
+            var totalSellPrice = sellPrice * amount;
+            CommitSell(itemId, amount, CurrencyType.Gold, totalSellPrice);
         }
 
-        private void CommitSell(string itemId, CurrencyType currencyType, int price)
+        private void CommitSell(string itemId, int sellAmount, CurrencyType currencyType, int price)
         {
-            _playerItemInventoryService.RemoveItem(itemId);
+            _playerItemInventoryService.RemoveItem(itemId, sellAmount);
             _currencySystem.AddCurrency(currencyType, price);
         }
 
