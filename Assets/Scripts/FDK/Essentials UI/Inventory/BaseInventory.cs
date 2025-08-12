@@ -54,6 +54,8 @@ namespace FDK.Inventory
             {
                 CreateAndRegisterSlot(itemData, amount);
             }
+
+            OnInventoryUpdated?.Invoke();
         }
 
         protected virtual void CreateAndRegisterSlot(U item, int amount)

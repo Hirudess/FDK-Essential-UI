@@ -1,4 +1,5 @@
-﻿using FDK.GameData;
+﻿using FDK.Core.GameData;
+using FDK.GameData;
 using FDK.Inventory;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,8 @@ namespace FDK.Sample
         [SerializeField]
         private Button _addItem;
         [SerializeField]
+        private TMP_InputField _amountField;
+        [SerializeField]
         private Button _removeItem;
 
         [SerializeField]
@@ -23,6 +26,8 @@ namespace FDK.Sample
         private IPlayerItemInventoryService _playerItemInventoryService;
         private IGameDataCollectionService _gameDataCollectionService;
 
+        private Dictionary<int, ItemGameData> _gameDataDictionary = new();
+
         [Inject]
         public void Inject(IGameDataCollectionService gameDataCollectionService, IPlayerItemInventoryService playerItemInventoryService)
         {
@@ -31,27 +36,35 @@ namespace FDK.Sample
 
             var getAllInventory = GetAllItemOption();
             _dropDownGameData.AddOptions(getAllInventory);
+            _amountField.contentType = TMP_InputField.ContentType.IntegerNumber;
 
             var getAllOwnedItem = GetAllOwnedItem();
             _dropDownInventory.AddOptions(getAllOwnedItem);
 
-            _addItem.onClick.AddListener(OnAddItempressed);
+            _addItem.onClick.AddListener(OnAddItemPressed);
         }
 
-        private void OnAddItempressed()
+        private void OnAddItemPressed()
         {
             var idx = _dropDownGameData.value;
-            var item = GetAllItemOption()[idx];
-
-            Debug.Log(item);
+            var amount = int.Parse(_amountField.text);
+            if (amount <= 0) return;
+            if (_gameDataDictionary.TryGetValue(idx, out var data))
+            {
+                Debug.LogError("Add " + data.Name + " " + amount);
+                _playerItemInventoryService.AddItem(data, amount);
+            }
         }
 
         private List<string> GetAllItemOption()
         {
+            var idx = 0;
             var options = new List<string>();
             foreach (var item in _gameDataCollectionService.ItemCollection.Items)
             {
+                _gameDataDictionary.Add(idx, item);
                 options.Add($"{item.Id}-{item.Name}");
+                idx++;
             }
 
             return options;

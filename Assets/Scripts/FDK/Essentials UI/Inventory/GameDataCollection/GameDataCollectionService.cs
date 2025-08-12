@@ -2,7 +2,6 @@
 using FDK.Core.Services;
 using UnityEngine;
 using UnityEngine.Scripting;
-using VContainer.Unity;
 
 namespace FDK.GameData
 {
@@ -19,7 +18,7 @@ namespace FDK.GameData
         CharacterGameDataCollection CharacterCollection { get; }
     }
 
-    public class GameDataCollectionService : BaseService, IGameDataCollectionService, IStartable
+    public class GameDataCollectionService : BaseService, IGameDataCollectionService
     {
         private readonly TextAsset _itemCollectionRef;
         private readonly TextAsset _characterCollectionRef;
@@ -54,11 +53,6 @@ namespace FDK.GameData
             CharacterCollection = characterCollection;
 
             SetReady(true);
-        }
-
-        public void Start()
-        {
-
         }
     }
 }

@@ -4,13 +4,20 @@ using VContainer;
 
 namespace FDK.Core
 {
-    public class PlayerGameplayDataService : BaseService
+    public interface IPlayerGameplayDataService
+    {
+        PlayerSaveData PlayerGameplayData { get; }
+        void SetPlayerGameplayData(PlayerSaveData playerSaveData);
+    }
+
+    public class PlayerGameplayDataService : BaseService, IPlayerGameplayDataService
     {
         public PlayerSaveData PlayerGameplayData { get; private set; }
 
         [Preserve]
         public PlayerGameplayDataService()
         {
+            SetReady(true);
         }
 
         public void SetPlayerGameplayData(PlayerSaveData playerSaveData)

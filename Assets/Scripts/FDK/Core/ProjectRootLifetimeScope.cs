@@ -1,4 +1,5 @@
 using FDK.Core;
+using FDK.Core.SaveFile;
 using FDK.Dialogue;
 using FDK.GameData;
 using FDK.Inventory;
@@ -15,7 +16,10 @@ public class ProjectRootLifetimeScope : LifetimeScope
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterInstance(_gameDataCollectionRef);
-        builder.RegisterEntryPoint<GameDataCollectionService>(Lifetime.Singleton).As<IGameDataCollectionService>();
+        builder.Register<GameDataCollectionService>(Lifetime.Singleton).As<IGameDataCollectionService>();
+        builder.Register<SaveLoadFileSystemService>(Lifetime.Singleton).As<ISaveLoadFileSystemService>();
+        builder.Register<PlayerGameplayDataService>(Lifetime.Singleton).As<IPlayerGameplayDataService>();
+
         builder.RegisterEntryPoint<CurrencySystem>(Lifetime.Singleton).As<ICurrencySystem>();
         builder.RegisterEntryPoint<PlayerItemInventoryService>(Lifetime.Singleton).As<IPlayerItemInventoryService>();
         builder.RegisterEntryPoint<TransactionSystem>(Lifetime.Singleton).As<ITransactionSystem>();

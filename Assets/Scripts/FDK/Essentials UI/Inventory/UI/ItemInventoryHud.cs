@@ -7,6 +7,8 @@ namespace FDK.Inventory
     {
         [SerializeField]
         private ItemSlotUIItem _slotPrefab;
+        [SerializeField]
+        private RectTransform _root;
         private Dictionary<string, ItemSlotUIItem> _gameData = new();
 
         public void InitializeUI(Dictionary<string, ItemSlotPlayerData> inventoryDict)
@@ -24,8 +26,10 @@ namespace FDK.Inventory
                 }
                 else
                 {
-                    var spawnedUI = Instantiate(_slotPrefab);
+                    var spawnedUI = Instantiate(_slotPrefab, _root);
                     spawnedUI.InitializeUI(null, item.Amount.ToString());
+
+                    _gameData.Add(kv.Key, spawnedUI);
                 }
             }
         }
