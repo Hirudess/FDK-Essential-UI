@@ -14,7 +14,7 @@ namespace FDK.Shop
     {
         void Buy(Dictionary<string, int> buyReceipt);
         void Craft(CraftingTransactionData craftingTransactionData);
-        void GetRewards(RewardsTransactionData rewardsTransactionData);
+        void GetRewards(Dictionary<string, int> rewardsReceipt);
         void Sell(string itemId, int amount);
     }
 
@@ -43,9 +43,10 @@ namespace FDK.Shop
             CommitShopTransaction(receipt);
         }
 
-        public void GetRewards(RewardsTransactionData rewardsTransactionData)
+        public void GetRewards(Dictionary<string, int> rewardsReceipt)
         {
-            CommitRewardTransaction(rewardsTransactionData);
+            var rewards = new RewardsTransactionData(rewardsReceipt);
+            CommitRewardTransaction(rewards);
         }
 
         public void Craft(CraftingTransactionData craftingTransactionData)
@@ -78,6 +79,7 @@ namespace FDK.Shop
         {
             var isCostEnough = IsCostEnough(transactionData);
             if (!isCostEnough) return;
+            Debug.LogError("CIAT2");
             RemoveCurrency(transactionData.CurrencyCost);
             AddRewards(transactionData);
         }
