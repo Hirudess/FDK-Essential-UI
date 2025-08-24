@@ -25,5 +25,10 @@ namespace FDK.Core
             PlayerGameplayData = playerSaveData;
             SetReady(true);
         }
+
+        private void ConvertInventoryIntoSaveData()
+        {
+
+        }
     }
 }

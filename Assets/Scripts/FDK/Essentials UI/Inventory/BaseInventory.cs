@@ -1,5 +1,6 @@
 ﻿using FDK.Core.GameData;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine.Events;
 
 namespace FDK.Inventory
@@ -43,12 +44,11 @@ namespace FDK.Inventory
                 var exceedMaxStack = slot.Amount + amount > slot.MaxStack;
                 if (exceedMaxStack)
                 {
-                    return;
+                    var diff = slot.MaxStack - (slot.Amount + amount);
+                    UnityEngine.Debug.LogError($"Cant add x{diff} {slot.Item.Name}. Exceed max stack");
                 }
-                else
-                {
-                    Items[itemId].Amount += amount;
-                }
+                var totalAmount = Items[itemId].Amount + amount;
+                Items[itemId].Amount = System.Math.Clamp(totalAmount, 0, slot.MaxStack);
             }
             else
             {

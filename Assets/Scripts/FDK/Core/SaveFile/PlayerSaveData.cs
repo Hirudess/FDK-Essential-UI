@@ -61,7 +61,8 @@ namespace FDK.Core.SaveFile
 
         public Inventory()
         {
-            Items = new InventoryItem[20];
+            MaxSlots = 20;
+            Items = new InventoryItem[MaxSlots];
         }
     }
 

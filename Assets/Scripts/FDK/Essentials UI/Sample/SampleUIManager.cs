@@ -1,4 +1,5 @@
 ﻿using FDK.Core.GameData;
+using FDK.Core.SaveFile;
 using FDK.GameData;
 using FDK.Inventory;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace FDK.Sample
         private TMP_InputField _amountField;
         [SerializeField]
         private Button _removeItem;
+        [SerializeField]
+        private Button _save;
 
         [SerializeField]
         private TMP_Dropdown _dropDownGameData;
@@ -25,14 +28,16 @@ namespace FDK.Sample
 
         private IPlayerItemInventoryService _playerItemInventoryService;
         private IGameDataCollectionService _gameDataCollectionService;
+        private ISaveLoadFileSystemService _saveLoadFileSystemService;
 
         private Dictionary<int, ItemGameData> _gameDataDictionary = new();
 
         [Inject]
-        public void Inject(IGameDataCollectionService gameDataCollectionService, IPlayerItemInventoryService playerItemInventoryService)
+        public void Inject(IGameDataCollectionService gameDataCollectionService, IPlayerItemInventoryService playerItemInventoryService, ISaveLoadFileSystemService saveLoadFileSystemService)
         {
             _playerItemInventoryService = playerItemInventoryService;
             _gameDataCollectionService = gameDataCollectionService;
+            _saveLoadFileSystemService = saveLoadFileSystemService;
 
             var getAllInventory = GetAllItemOption();
             _dropDownGameData.AddOptions(getAllInventory);
@@ -42,6 +47,7 @@ namespace FDK.Sample
             _dropDownInventory.AddOptions(getAllOwnedItem);
 
             _addItem.onClick.AddListener(OnAddItemPressed);
+            _save.onClick.AddListener(Save);
         }
 
         private void OnAddItemPressed()
@@ -51,9 +57,13 @@ namespace FDK.Sample
             if (amount <= 0) return;
             if (_gameDataDictionary.TryGetValue(idx, out var data))
             {
-                Debug.LogError("Add " + data.Name + " " + amount);
                 _playerItemInventoryService.AddItem(data, amount);
             }
+        }
+
+        private void Save()
+        {
+            _saveLoadFileSystemService.Save();
         }
 
         private List<string> GetAllItemOption()

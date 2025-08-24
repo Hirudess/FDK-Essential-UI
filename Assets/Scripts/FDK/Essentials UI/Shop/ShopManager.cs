@@ -1,4 +1,5 @@
-﻿using VContainer;
+﻿using System.Collections.Generic;
+using VContainer;
 using VContainer.Unity;
 
 namespace FDK.Shop
@@ -26,7 +27,20 @@ namespace FDK.Shop
         {
             if (_selectedShop == null) return;
             if (!_selectedShop.Products.Contains(id)) return;
-            _transactionSystem.Buy(id, amount);
+
+            var receipt = new Dictionary<string, int>();
+            receipt.Add(id, amount);
+            _transactionSystem.Buy(receipt);
+        }
+
+        private void BulkBuy(Dictionary<string, int> receipt)
+        {
+            if (_selectedShop == null) return;
+            foreach (var item in _selectedShop.Products)
+            {
+                if (!_selectedShop.Products.Contains(item)) return;
+            }
+            _transactionSystem.Buy(receipt);
         }
 
         private void Sell(string id, int amount)
