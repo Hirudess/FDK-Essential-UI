@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FDK.Inventory;
+using System;
+using System.Collections.Generic;
 
 namespace FDK.Core.SaveFile
 {
@@ -64,6 +66,21 @@ namespace FDK.Core.SaveFile
             MaxSlots = 20;
             Items = new InventoryItem[MaxSlots];
         }
+
+        public Inventory(Dictionary<string, ItemSlotPlayerData> inventory)
+        {
+            MaxSlots = 20;
+            Items = new InventoryItem[inventory.Count];
+
+            var count = 0;
+            foreach (var item in inventory)
+            {
+                Items[count].Id = item.Key;
+                Items[count].Stack = item.Value.Amount;
+                count++;
+            }
+        }
+
     }
 
     [Serializable]

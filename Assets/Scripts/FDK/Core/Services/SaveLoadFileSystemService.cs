@@ -56,7 +56,9 @@ namespace FDK.Core.SaveFile
 
         public void Save()
         {
-            var data = _gameplayDataService.PlayerGameplayData;
+            _gameplayDataService.PrepareSaving();
+
+            var data = _gameplayDataService.PlayerSaveData;
             if (data == null) return;
             string filePath = Path.Combine(Application.persistentDataPath, _filename);
             string jsonData = JsonUtility.ToJson(data, prettyPrint: true);
