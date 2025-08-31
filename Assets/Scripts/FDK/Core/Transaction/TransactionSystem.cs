@@ -79,8 +79,9 @@ namespace FDK.Shop
         {
             var isCostEnough = IsCostEnough(transactionData);
             if (!isCostEnough) return;
-            Debug.LogError("CIAT2");
+
             RemoveCurrency(transactionData.CurrencyCost);
+            RemoveCost(transactionData);
             AddRewards(transactionData);
         }
 
@@ -97,8 +98,8 @@ namespace FDK.Shop
         {
             foreach (var reward in transactionData.Rewards)
             {
-                var item = GetItem(reward.ItemId);
-                _playerItemInventoryService.AddItem(item, reward.Amount);
+                var item = GetItem(reward.Key);
+                _playerItemInventoryService.AddItem(item, reward.Value);
             }
         }
 
@@ -112,7 +113,7 @@ namespace FDK.Shop
         {
             foreach (var cost in transactionData.ItemCost)
             {
-                _playerItemInventoryService.RemoveItem(cost.ItemId, cost.Amount);
+                _playerItemInventoryService.RemoveItem(cost.Key, cost.Value);
             }
 
             var shopCost = transactionData.CurrencyCost;
@@ -129,22 +130,17 @@ namespace FDK.Shop
             return IsItemCostEnough(craftingTransactionData.ItemCost) && IsCurrencyEnough(craftingTransactionData.CurrencyCost);
         }
 
-        private bool IsCostEnough(RewardsTransactionData transactionData)
-        {
-            return true;
-        }
-
         private bool IsCostEnough(ShopTransactionData shopTransactionData)
         {
             return IsCurrencyEnough(shopTransactionData.CurrencyCost);
         }
 
-        private bool IsItemCostEnough(TransactionCostItem[] itemCost)
+        private bool IsItemCostEnough(Dictionary<string, int> itemCost)
         {
             foreach (var item in itemCost)
             {
-                var itemData = GetItem(item.ItemId);
-                if (item == null) return false;
+                var itemData = GetItem(item.Key);
+                if (itemData == null) return false;
             }
 
             return true;
@@ -177,7 +173,7 @@ namespace FDK.Shop
 
         private ItemGameData GetItem(string itemId)
         {
-            return _gameDataCollectionService.ItemCollection.Items.FirstOrDefault(x => x.Id == itemId);
+            return _gameDataCollectionService.ItemCollection.Collections.FirstOrDefault(x => x.Id == itemId);
         }
     }
 }

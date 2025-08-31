@@ -5,18 +5,11 @@ namespace FDK.CoreTransaction
 {
     public abstract class TransactionBaseData
     {
-        public TransactionRewardItem[] Rewards { get; set; }
+        public Dictionary<string, int> Rewards { get; set; }
 
-        public TransactionBaseData(Dictionary<string, int> receiptDict)
+        public TransactionBaseData(Dictionary<string, int> orderItems)
         {
-            Rewards = new TransactionRewardItem[receiptDict.Count];
-
-            var count = 0;
-            foreach (var item in receiptDict)
-            {
-                Rewards[count] = new TransactionRewardItem(item.Key, item.Value);
-                count++;
-            }
+            Rewards = orderItems;
         }
     }
 
@@ -33,13 +26,12 @@ namespace FDK.CoreTransaction
         {
             CurrencyCost = currencyCost;
         }
-
         public TransactionCostCurrency CurrencyCost { get; set; }
     }
 
     public class CraftingTransactionData : TransactionBaseData
     {
-        public TransactionCostItem[] ItemCost;
+        public Dictionary<string, int> ItemCost;
         public TransactionCostCurrency CurrencyCost;
 
         public CraftingTransactionData(Dictionary<string, int> receiptDict) : base(receiptDict)
