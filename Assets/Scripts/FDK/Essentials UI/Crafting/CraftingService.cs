@@ -1,44 +1,34 @@
-﻿using FDK.Core.Services;
-using FDK.Inventory;
+﻿using FDK.Core;
+using FDK.Core.Services;
+using FDK.Shop;
 using UnityEngine.Scripting;
 
 namespace FDK.Crafting
 {
-    public class CraftingService : BaseService
+    public interface ICraftingService
     {
-        private readonly PlayerItemInventoryService _playerItemInventoryService;
+        void Craft(CraftingRecipeGameData craftingRecipeGameData);
+    }
+
+    public class CraftingService : BaseService, ICraftingService
+    {
+        private readonly ITransactionSystem _transactionSystem;
 
         [Preserve]
-        public CraftingService(PlayerItemInventoryService playerItemInventoryService)
+        public CraftingService(ITransactionSystem transactionSystem)
         {
-            _playerItemInventoryService = playerItemInventoryService;
+            _transactionSystem = transactionSystem;
         }
 
         public void Craft(CraftingRecipeGameData craftingRecipeGameData)
         {
-            if (!ReadyToCraft(craftingRecipeGameData)) return;
-
             CommitCraft(craftingRecipeGameData);
         }
 
         private void CommitCraft(CraftingRecipeGameData craftingRecipeGameData)
         {
-            foreach (var component in craftingRecipeGameData.RequiredItems)
-            {
-                _playerItemInventoryService.RemoveItem(component.Item.Id, component.Amount);
-            }
-
-            _playerItemInventoryService.AddItem(craftingRecipeGameData.Result, 1);
-        }
-
-        private bool ReadyToCraft(CraftingRecipeGameData craftingRecipeGameData)
-        {
-            foreach (var component in craftingRecipeGameData.RequiredItems)
-            {
-                var hasItem = _playerItemInventoryService.HasItem(component.Item.Id);
-                if (!hasItem) return false;
-            }
-            return true;
+            var craftingData = craftingRecipeGameData.ToCraftingTransactionData();
+            _transactionSystem.Craft(craftingData);
         }
     }
 

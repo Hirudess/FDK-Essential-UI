@@ -1,13 +1,10 @@
-﻿using Mono.Cecil.Cil;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FDK.Core.GameData
 {
     [System.Serializable]
-    public class ItemGameDataCollection
+    public class ItemGameDataCollection : BaseGameDataCollection<ItemGameData>
     {
-        public List<ItemGameData> Items;
-
         private Dictionary<string, ItemGameData> _itemsDict = new();
 
         public ItemGameData GetItem(string key)
@@ -21,13 +18,12 @@ namespace FDK.Core.GameData
 
         public ItemGameDataCollection()
         {
-            if (Items == null) Items = new();
+            if (Collections == null) Collections = new();
 
-            foreach (var item in Items)
+            foreach (var item in Collections)
             {
                 _itemsDict.Add(item.Id, item);
             }
-
         }
     }
 }

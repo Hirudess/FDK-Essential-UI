@@ -1,0 +1,39 @@
+{
+    "Collections": [
+        {
+            "Id": "SD-CHAR0001-A",
+            "Name": "Elara",
+            "Description": "A devout follower of Odin who channeled her faith into powerful healing magics. She now wanders the land, mending wounds and protecting the innocent from the shadows of the fallen gods."
+        },
+        {
+            "Id": "SD-CHAR0002-A",
+            "Name": "Kaelin",
+            "Description": "The sole survivor of a knightly order decimated in the Ragnarok war. She wields her spear not for glory, but to ensure no other home suffers the same fate as hers."
+        },
+        {
+            "Id": "SD-CHAR0003-A",
+            "Name": "Lyra",
+            "Description": "A scholarly prodigy from the Mage Academy of Geffen who unlocked the true potential of the four elemental spirits. She seeks to use this knowledge to restore balance to the war-torn world."
+        },
+        {
+            "Id": "SD-CHAR0004-A",
+            "Name": "Shaya",
+            "Description": "A ghost from the shadows of Morroc, bound by a contract to eliminate the demonic forces that spilled from the portal. She fights not for good or evil, but for the coin that buys her freedom."
+        },
+        {
+            "Id": "SD-CHAR0005-A",
+            "Name": "Aria",
+            "Description": "A master huntress from the Payon forests who perfected her archery to protect her home from the monstrous incursions. Her eagle eye can pinpoint the weakness of any foe from a thousand paces."
+        },
+        {
+            "Id": "SD-CHAR0006-A",
+            "Name": "Valeria",
+            "Description": "A former dancer who found a higher calling, using her graceful movements to channel divine magic into protective barriers and hymns. Her dance is a prayer, and her prayer is a shield.  "
+        },
+        {
+            "Id": "SD-CHAR0007-A",
+            "Name": "Isolde",
+            "Description": "A monk who achieved spiritual enlightenment through physical perfection and devastating fist techniques. She seeks a worthy opponent to test her strength against the heavens themselves."
+        }
+    ]
+}

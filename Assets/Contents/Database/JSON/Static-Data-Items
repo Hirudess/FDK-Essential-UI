@@ -1,0 +1,101 @@
+{
+    "_pathFolder": "/Contents/Database/JSON/",
+    "_shopGameName": "Static-Data-Items",
+    "JsonAsset": {
+        "instanceID": 46622
+    },
+    "ItemGameDataCollection": {
+        "Items": [
+            {
+                "Id": "ITM001",
+                "Name": "Healing Potion",
+                "Description": "A shimmering red liquid that restores vitality when consumed.",
+                "Price": 3245
+            },
+            {
+                "Id": "ITM002",
+                "Name": "Mana Elixir",
+                "Description": "This blue elixir replenishes magical energies with just a few drops.",
+                "Price": 5872
+            },
+            {
+                "Id": "ITM003",
+                "Name": "Stamina Brew",
+                "Description": "Warriors drink this to keep fighting through the most grueling battles.",
+                "Price": 4123
+            },
+            {
+                "Id": "ITM004",
+                "Name": "Invisibility Draught",
+                "Description": "Drink this to become unseen, but don't make a sound!",
+                "Price": 8456
+            },
+            {
+                "Id": "ITM005",
+                "Name": "Strength Tonic",
+                "Description": "Feel the power of a dozen ogres with this muscle-enhancing formula.",
+                "Price": 5231
+            },
+            {
+                "Id": "ITM006",
+                "Name": "Swiftness Serum",
+                "Description": "Makes you faster than a startled deer in hunting season.",
+                "Price": 6789
+            },
+            {
+                "Id": "ITM007",
+                "Name": "Fire Resistance Philter",
+                "Description": "Protects against dragon's breath and other fiery dangers.",
+                "Price": 7342
+            },
+            {
+                "Id": "ITM008",
+                "Name": "Ice Immunity Potion",
+                "Description": "Survive the coldest tundras with this frost-defying brew.",
+                "Price": 6123
+            },
+            {
+                "Id": "ITM009",
+                "Name": "Poison Antidote",
+                "Description": "The antidote to even the deadliest of poisons known to alchemists.",
+                "Price": 5567
+            },
+            {
+                "Id": "ITM010",
+                "Name": "Luck Infusion",
+                "Description": "Sometimes it's better to be lucky than good. This helps with that.",
+                "Price": 9876
+            },
+            {
+                "Id": "ITM011",
+                "Name": "Wisdom Concoction",
+                "Description": "Ancient scholars used this to enhance their mental faculties.",
+                "Price": 7654
+            },
+            {
+                "Id": "ITM012",
+                "Name": "Night Vision Mixture",
+                "Description": "See clearly in the darkest dungeons with this luminescent potion.",
+                "Price": 4321
+            },
+            {
+                "Id": "ITM013",
+                "Name": "Levitation Essence",
+                "Description": "Defy gravity for a short time with this floating formula.",
+                "Price": 8999
+            },
+            {
+                "Id": "ITM014",
+                "Name": "Giant Growth Phial",
+                "Description": "Temporary size enhancement - results may vary, side effects include ripped clothing.",
+                "Price": 6785
+            },
+            {
+                "Id": "ITM015",
+                "Name": "Shrinking Solution",
+                "Description": "Shrink down to mouse size to access tiny passages and hide from danger.",
+                "Price": 5432
+            }
+        ]
+    }
+}

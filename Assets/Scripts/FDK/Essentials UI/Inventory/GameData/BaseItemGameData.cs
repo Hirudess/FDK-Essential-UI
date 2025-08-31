@@ -3,9 +3,8 @@
 namespace FDK.Core.GameData
 {
     [System.Serializable]
-    public abstract class BaseItemGameData
+    public abstract class BaseItemGameData : BaseGameData
     {
-        public string Id;
         public string Name;
         public string Description;
     }

@@ -13,7 +13,7 @@ namespace FDK.Dialogue
         void PlayDialogue(IDialogueLine dialogueLine);
     }
 
-    public class DialogueBox : BaseUIItemGroup, IDialogueBox
+    public class DialogueBox : BaseUIPanel, IDialogueBox
     {
         [SerializeField]
         private float _charactersPerSecond = 30f;

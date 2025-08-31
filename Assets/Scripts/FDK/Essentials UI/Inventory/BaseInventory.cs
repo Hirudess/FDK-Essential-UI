@@ -22,11 +22,13 @@ namespace FDK.Inventory
 
     public abstract class BaseInventory<T, U> : IBaseInventory<T, U> where T : BaseSlotPlayerData<U> where U : BaseItemGameData
     {
-        protected readonly Dictionary<string, T> Items = new Dictionary<string, T>();
+        public readonly Dictionary<string, T> Items = new Dictionary<string, T>();
 
         public virtual int Capacity { get; protected set; } = 20;
         public int CurrentCount => Items.Count;
         public bool IsFull => CurrentCount >= Capacity;
+
+
 
         public UnityEvent OnInventoryUpdated { get; } = new();
 

@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FDK.UI.Base;
+﻿using FDK.UI.Base;
 using FDK.UI.Base.Interface;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace FDK
 {
-    public abstract class BaseSelectionUIItem<T, U> : BaseUIItemGroup, IBaseSelectableUiItem where T : IGameUIData where U : BaseSelectableUIItem<T>
+    public abstract class BaseSelectionUIItem<T, U> : BaseUIPanel, IBaseSelectableUiItem where T : IGameUIData where U : BaseSelectableUIItem<T>
     {
         [SerializeField] private U _selectionUIPrefabs;
         [SerializeField] protected RectTransform _root;
@@ -40,14 +40,18 @@ namespace FDK
         public override void UpdateUI()
         {
             if (GameData == null) return;
-            foreach (var item in GameData)
+            for (int i = 0; i < GameData.Count; i++)
             {
-                var ui = Instantiate(_selectionUIPrefabs, _content);
-                ui.Initialize(item, Select);
-
-                var isExistInDict = Items.ContainsKey(item);
-                if (isExistInDict) continue;
-                Items.Add(item, ui);
+                var data = Items.ElementAt(i);
+                if (i < Items.Count)
+                {
+                    data.Value.UpdateUI();
+                }
+                else
+                {
+                    var ui = Instantiate(_selectionUIPrefabs, _content);
+                    ui.Initialize(data.Key, Select);
+                }
             }
         }
 

@@ -2,6 +2,6 @@
 {
     public class BaseGameData
     {
-        public string ID;
+        public string Id;
     }
 }

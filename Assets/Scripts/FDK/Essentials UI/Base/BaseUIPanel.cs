@@ -2,7 +2,7 @@
 
 namespace FDK.UI.Base
 {
-    public class BaseUIItemGroup : BaseUiItem
+    public class BaseUIPanel : BaseUiItem
     {
         [SerializeField] private CanvasGroup _canvasGroup;
 

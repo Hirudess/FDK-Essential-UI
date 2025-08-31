@@ -113,7 +113,7 @@ namespace FDK.Sample
         {
             var idx = 0;
             var options = new List<string>();
-            foreach (var item in _gameDataCollectionService.ItemCollection.Items)
+            foreach (var item in _gameDataCollectionService.ItemCollection.Collections)
             {
                 _gameDataDictionary.Add(idx, item);
                 options.Add($"{item.Id}-{item.Name}");

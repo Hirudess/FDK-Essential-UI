@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace FDK.Core.GameData
+﻿namespace FDK.Core.GameData
 {
     [System.Serializable]
-    public class CharacterGameDataCollection
+    public class CharacterGameDataCollection : BaseGameDataCollection<CharacterGameData>
     {
-        public List<CharacterGameData> Characters;
     }
 }
