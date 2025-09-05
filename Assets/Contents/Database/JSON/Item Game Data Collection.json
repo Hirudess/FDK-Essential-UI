@@ -1,0 +1,64 @@
+{
+    "Collections": [
+        {
+            "Id": "SD-ITM001-A",
+            "Name": "Ember Blossom",
+            "Description": "A flower with petals that glow like hot coals. When ground into a paste, it can cauterize wounds and grant minor fire resistance.",
+            "Price": 300
+        },
+        {
+            "Id": "SD-ITM002-A",
+            "Name": "Fey Ivy",
+            "Description": "A silver-leafed vine that shimmers under moonlight. It is used in enchantments to bind magic to objects or to create elusive glamours.",
+            "Price": 300
+        },
+        {
+            "Id": "SD-ITM003-A",
+            "Name": "Grave Dust Lichen",
+            "Description": "A brittle, grey lichen found only in ancient graveyards. It is a necessary component for speaking with the dead or creating necrotic poisons.",
+            "Price": 300
+        },
+        {
+            "Id": "SD-ITM004-A",
+            "Name": "Sky-Thread Nettle",
+            "Description": " A nettle that grows unnaturally tall, seeking the wind. Its fibers can be woven into potions of levitation or to lighten heavy armor.",
+            "Price": 300
+        },
+        {
+            "Id": "SD-ITM005-A",
+            "Name": "Weeping Widow's Leaf",
+            "Description": "A broad leaf that constantly exudes droplets of clear, salty water. It is the base for powerful potions of sorrow and despair.",
+            "Price": 400
+        },
+        {
+            "Id": "SD-ITM006-A",
+            "Name": "Elven Root",
+            "Description": "A thick, regenerative root that twitches when cut. It is a potent, if unstable, ingredient for healing salves and regeneration potions.",
+            "Price": 300
+        },
+        {
+            "Id": "SD-ITM006-A",
+            "Name": "Mirage Sage",
+            "Description": "A dusty, pale green herb that wavers in the air like a heat haze. Burning its leaves creates confusing hallucinations in a wide area.",
+            "Price": 400
+        },
+        {
+            "Id": "SD-ITM007-A",
+            "Name": "Crystal Dew",
+            "Description": "Not an herb itself, but a magical sap collected from the leaves of the Dawnwood tree. Each drop can purify water or be used to identify magical auras.",
+            "Price": 300
+        },
+        {
+            "Id": "SD-ITM008-A",
+            "Name": "Crystal Dew",
+            "Description": "A vicious, dark vine covered in hooked thorns. Its essence is used in oils to make weapons inflict painful, bleeding wounds.",
+            "Price": 300
+        },
+        {
+            "Id": "SD-ITM009-A",
+            "Name": "Frost-veil",
+            "Description": "A delicate, fern-like herb that feels cold to the touch and is often found near eternal ice. It is used in potions to resist cold and to preserve alchemical ingredients.  ",
+            "Price": 400
+        }
+    ]
+}

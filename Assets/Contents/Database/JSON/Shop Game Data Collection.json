@@ -1,0 +1,43 @@
+{
+    "Collections": [
+        {
+            "Id": "SD-SHP-001-A",
+            "ShopVisualData": {
+                "Name": "Elim Groceries",
+                "Location": "Elim",
+                "Owner": "Adel"
+            },
+            "Products": [
+                "SD-ITM001-A",
+                "SD-ITM002-A",
+                "SD-ITM003-A"
+            ]
+        },
+        {
+            "Id": "SD-SHP-002-A",
+            "ShopVisualData": {
+                "Name": "Saravati Groceries",
+                "Location": "Devata",
+                "Owner": "Tamara"
+            },
+            "Products": [
+                "SD-ITM002-A",
+                "SD-ITM003-A",
+                "SD-ITM004-A"
+            ]
+        },
+        {
+            "Id": "SD-SHP-003-A",
+            "ShopVisualData": {
+                "Name": "Madelin Shop",
+                "Location": "Madelin",
+                "Owner": "Lyna"
+            },
+            "Products": [
+                "SD-ITM006-A",
+                "SD-ITM007-A",
+                "SD-ITM008-A"
+            ]
+        }
+    ]
+}

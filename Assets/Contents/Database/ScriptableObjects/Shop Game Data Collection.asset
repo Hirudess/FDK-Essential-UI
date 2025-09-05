@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6338312f22b588042b43920a1043f6ce, type: 3}
+  m_Name: Shop Game Data Collection
+  m_EditorClassIdentifier: 
+  JsonAsset: {fileID: 0}
+  _pathFolder: /Contents/Database/JSON/
+  _gameDataName: Shop Game Data Collection.json
+  GameData:
+    Collections:
+    - Id: SD-SHP-001-A
+      ShopVisualData:
+        Name: Elim Groceries
+        Location: Elim
+        Owner: Adel
+      Products:
+      - SD-ITM001-A
+      - SD-ITM002-A
+      - SD-ITM003-A
+    - Id: SD-SHP-002-A
+      ShopVisualData:
+        Name: Saravati Groceries
+        Location: Devata
+        Owner: Tamara
+      Products:
+      - SD-ITM002-A
+      - SD-ITM003-A
+      - SD-ITM004-A
+    - Id: SD-SHP-003-A
+      ShopVisualData:
+        Name: Madelin Shop
+        Location: Madelin
+        Owner: Lyna
+      Products:
+      - SD-ITM006-A
+      - SD-ITM007-A
+      - SD-ITM008-A
