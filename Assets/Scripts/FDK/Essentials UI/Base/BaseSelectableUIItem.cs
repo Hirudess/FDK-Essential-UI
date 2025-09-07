@@ -12,18 +12,23 @@ namespace FDK
 
         public System.Action<T> OnButtonClicked;
 
-        public T GameData { get; private set; }
+        public T GameUIData { get; private set; }
 
         public bool IsSelected => throw new System.NotImplementedException();
 
-        public void Initialize(T campaignData, System.Action<T> onClick)
+        public void Initialize(T uiData, System.Action<T> onClick)
         {
-            GameData = campaignData;
+            GameUIData = uiData;
             OnButtonClicked = onClick;
 
             _button.onClick.RemoveAllListeners();
             _button.onClick.AddListener(() => OnClick());
             UpdateUI();
+        }
+
+        public void UpdateGameData(T UIData)
+        {
+            GameUIData = UIData;
         }
 
         public override void UpdateUI()
@@ -33,8 +38,8 @@ namespace FDK
 
         private void OnClick()
         {
-            if (GameData == null) return;
-            OnButtonClicked?.Invoke(GameData);
+            if (GameUIData == null) return;
+            OnButtonClicked?.Invoke(GameUIData);
             Select();
         }
 

@@ -78,11 +78,17 @@ namespace FDK.Shop
         private void CommitShopTransaction(ShopTransactionData transactionData)
         {
             var isCostEnough = IsCostEnough(transactionData);
-            if (!isCostEnough) return;
+            if (!isCostEnough)
+            {
+                Debug.LogError("Cant Buy Products. Cost not enough");
+                return;
+            }
 
             RemoveCurrency(transactionData.CurrencyCost);
             RemoveCost(transactionData);
             AddRewards(transactionData);
+
+            Debug.LogError("Commit transaction success");
         }
 
         private void CommitCraftingTransaction(CraftingTransactionData transactionData)

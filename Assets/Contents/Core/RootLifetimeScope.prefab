@@ -49,5 +49,6 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   _gameDataCollectionRef:
-    ItemCollection: {fileID: 4900000, guid: df46f19c0be52354baa53d68290a7720, type: 3}
-    CharacterCollection: {fileID: 4900000, guid: 0302873c96549ee48983ea673669049c, type: 3}
+    ItemCollection: {fileID: 4900000, guid: 9f82596fd9c9acf43985e5738443067d, type: 3}
+    CharacterCollection: {fileID: 4900000, guid: 2f2fd179bb0963a4e9d23e59a6360e01, type: 3}
+    ShopCollection: {fileID: 4900000, guid: 35feebdd3714bab4b9673a21b30b4168, type: 3}

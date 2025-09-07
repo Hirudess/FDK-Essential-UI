@@ -27,13 +27,18 @@ namespace FDK.Shop
     [System.Serializable]
     public class ShopProductUIData : IGameUIData
     {
-        public ShopProductUIData(string name , string price)
+        public ShopProductUIData(string id, string name, string desc, int price)
         {
+            Id = id;
             Name = name;
+            Desc = desc;
             Price = price;
         }
+
+        public string Id;
         public string Name;
-        public string Price;
+        public string Desc;
+        public int Price;
     }
 
 

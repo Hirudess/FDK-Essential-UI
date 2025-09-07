@@ -37,25 +37,25 @@
             "Price": 300
         },
         {
-            "Id": "SD-ITM006-A",
+            "Id": "SD-ITM007-A",
             "Name": "Mirage Sage",
             "Description": "A dusty, pale green herb that wavers in the air like a heat haze. Burning its leaves creates confusing hallucinations in a wide area.",
             "Price": 400
         },
         {
-            "Id": "SD-ITM007-A",
+            "Id": "SD-ITM008-A",
             "Name": "Crystal Dew",
             "Description": "Not an herb itself, but a magical sap collected from the leaves of the Dawnwood tree. Each drop can purify water or be used to identify magical auras.",
             "Price": 300
         },
         {
-            "Id": "SD-ITM008-A",
+            "Id": "SD-ITM009-A",
             "Name": "Crystal Dew",
             "Description": "A vicious, dark vine covered in hooked thorns. Its essence is used in oils to make weapons inflict painful, bleeding wounds.",
             "Price": 300
         },
         {
-            "Id": "SD-ITM009-A",
+            "Id": "SD-ITM010-A",
             "Name": "Frost-veil",
             "Description": "A delicate, fern-like herb that feels cold to the touch and is often found near eternal ice. It is used in potions to resist cold and to preserve alchemical ingredients.  ",
             "Price": 400

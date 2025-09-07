@@ -14,10 +14,11 @@ namespace FDK
         [SerializeField] protected RectTransform _content;
 
         public UnityEvent<T> OnButtonClicked;
-        public Dictionary<T, U> Items = new();
+        public Dictionary<T, U> ItemContainerDict = new();
 
         public T SelectedGameData { get; private set; }
         public List<T> GameData = new();
+        public List<U> ItemContainer = new();
 
         public bool IsSelected { get; private set; }
 
@@ -32,32 +33,42 @@ namespace FDK
         protected virtual void Select(T gameData)
         {
             OnButtonClicked?.Invoke(gameData);
-            if (!Items.ContainsKey(gameData)) { return; }
-            var selectable = Items[gameData];
+            if (!ItemContainerDict.ContainsKey(gameData)) { return; }
+            var selectable = ItemContainerDict[gameData];
+            SelectedGameData = gameData;
             Select(selectable);
         }
 
         public override void UpdateUI()
         {
+            ItemContainerDict.Clear();
+
             if (GameData == null) return;
             for (int i = 0; i < GameData.Count; i++)
             {
-                var data = Items.ElementAt(i);
-                if (i < Items.Count)
+                if (i < ItemContainer.Count)
                 {
-                    data.Value.UpdateUI();
+                    var container = ItemContainer[i];
+                    container.UpdateGameData(GameData[i]);
+                    container.UpdateUI();
+
+                    ItemContainerDict.Add(GameData[i], container);
                 }
                 else
                 {
+                    var data = GameData[i];
                     var ui = Instantiate(_selectionUIPrefabs, _content);
-                    ui.Initialize(data.Key, Select);
+                    ui.Initialize(data, Select);
+                    ItemContainer.Add(ui);
+
+                    ItemContainerDict.Add(data, ui);
                 }
             }
         }
 
         public virtual void Select(U selectable)
         {
-            foreach (var item in Items)
+            foreach (var item in ItemContainerDict)
             {
                 var showUI = item.Value.Equals(selectable);
                 if (showUI)
@@ -73,8 +84,8 @@ namespace FDK
 
         private void SelectFirst()
         {
-            if (Items.Count <= 0) return;
-            var firstItem = Items.FirstOrDefault();
+            if (ItemContainerDict.Count <= 0) return;
+            var firstItem = ItemContainerDict.FirstOrDefault();
             Select(firstItem.Key);
         }
 
@@ -85,7 +96,7 @@ namespace FDK
 
         public void Select()
         {
-            throw new System.NotImplementedException();
+
         }
     }
 }
