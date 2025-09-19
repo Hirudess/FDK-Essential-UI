@@ -1,19 +1,19 @@
-﻿using FDK.Core.GameData;
-using TacticsRPG.Game.GameData;
+﻿using FDK.Core;
+using FDK.Core.GameData;
 
 namespace FDK.Crafting
 {
     [System.Serializable]
     public class CraftingRecipeGameData : BaseGameData
     {
+        public string Result;
         public CraftingComponent[] RequiredItems;
-        public ItemGameData Result;
     }
 
     [System.Serializable]
     public class CraftingComponent
     {
-        public ItemGameData Item;
+        public string ItemId;
         public int Amount;
     }
 }

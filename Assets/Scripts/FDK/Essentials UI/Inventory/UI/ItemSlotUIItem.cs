@@ -1,18 +1,41 @@
-﻿using UnityEngine;
+﻿using FDK.UI.Base.Interface;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace FDK.Inventory
 {
-    public class ItemSlotUIItem : BaseInventorySlotUiItem
+    #region GameUIData
+    public interface IItemSlotUIData : IGameUIData
     {
-        public void InitializeUI(Sprite sprite, string amount)
+        Sprite Sprite { get; }
+        int Amount { get; }
+    }
+
+    public class ItemSlotUIData : IItemSlotUIData
+    {
+        public ItemSlotUIData(Sprite sprite, int amount)
         {
-            _image.sprite = sprite;
-            _amount.text = amount;
+            Sprite = sprite;
+            Amount = amount;
         }
 
-        public void UpdateUI(string amount)
+        public Sprite Sprite { get; }
+        public int Amount { get; }
+    }
+    #endregion
+
+    public class ItemSlotUIItem : BaseSelectableUIItem<ItemSlotUIData>
+    {
+        [SerializeField] private Image _image;
+        [SerializeField] private TMP_Text _amount;
+
+        public override void UpdateUI()
         {
-            _amount.text = amount;
+            if (GameUIData == null) return;
+
+            _image.sprite = GameUIData.Sprite;
+            _amount.text = GameUIData.Amount.ToString();
         }
     }
 }

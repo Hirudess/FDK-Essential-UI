@@ -1,0 +1,54 @@
+{
+    "Collections": [
+        {
+            "Id": "SD-RCP001-A",
+            "Result": "SD-ITM011-A",
+            "RequiredItems": [
+                {
+                    "ItemId": "SD-ITM001-A",
+                    "Amount": 3
+                },
+                {
+                    "ItemId": "SD-ITM002-A",
+                    "Amount": 4
+                }
+            ]
+        },
+        {
+            "Id": "SD-RCP002-A",
+            "Result": "SD-ITM012-A",
+            "RequiredItems": [
+                {
+                    "ItemId": "SD-ITM003-A",
+                    "Amount": 3
+                },
+                {
+                    "ItemId": "SD-ITM004-A",
+                    "Amount": 4
+                }
+            ]
+        },
+        {
+            "Id": "SD-RCP003-A",
+            "Result": "SD-ITM013-A",
+            "RequiredItems": [
+                {
+                    "ItemId": "SD-ITM001-A",
+                    "Amount": 3
+                },
+                {
+                    "ItemId": "SD-ITM002-A",
+                    "Amount": 4
+                },
+                {
+                    "ItemId": "SD-ITM003-A",
+                    "Amount": 2
+                },
+                {
+                    "ItemId": "SD-ITM004-A",
+                    "Amount": 2
+                }
+            ]
+        }
+    ]
+}

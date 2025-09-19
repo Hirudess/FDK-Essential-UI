@@ -1,6 +1,5 @@
 ﻿using FDK.Core.GameData;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine.Events;
 
 namespace FDK.Inventory
@@ -28,8 +27,6 @@ namespace FDK.Inventory
         public int CurrentCount => Items.Count;
         public bool IsFull => CurrentCount >= Capacity;
 
-
-
         public UnityEvent OnInventoryUpdated { get; } = new();
 
         public virtual void AddItem(U itemData, int amount)
@@ -43,14 +40,15 @@ namespace FDK.Inventory
             if (Items.ContainsKey(itemId))
             {
                 var slot = Items[itemId];
-                var exceedMaxStack = slot.Amount + amount > slot.MaxStack;
+                var maxStack = slot.Item.MaxStack;
+                var exceedMaxStack = slot.Amount + amount > maxStack;
                 if (exceedMaxStack)
                 {
-                    var diff = slot.MaxStack - (slot.Amount + amount);
+                    var diff = maxStack - (slot.Amount + amount);
                     UnityEngine.Debug.LogError($"Cant add x{diff} {slot.Item.Name}. Exceed max stack");
                 }
                 var totalAmount = Items[itemId].Amount + amount;
-                Items[itemId].Amount = System.Math.Clamp(totalAmount, 0, slot.MaxStack);
+                Items[itemId].Amount = System.Math.Clamp(totalAmount, 0, maxStack);
             }
             else
             {

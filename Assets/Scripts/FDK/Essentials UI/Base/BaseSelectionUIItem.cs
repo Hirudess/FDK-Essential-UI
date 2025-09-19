@@ -9,11 +9,12 @@ namespace FDK
 {
     public abstract class BaseSelectionUIItem<T, U> : BaseUIPanel, IBaseSelectableUiItem where T : IGameUIData where U : BaseSelectableUIItem<T>
     {
-        [SerializeField] private U _selectionUIPrefabs;
+        [SerializeField] protected U _selectionUIPrefabs;
         [SerializeField] protected RectTransform _root;
         [SerializeField] protected RectTransform _content;
 
         public UnityEvent<T> OnButtonClicked;
+        public UnityEvent<T> OnSelectionChanged = new();
         public Dictionary<T, U> ItemContainerDict = new();
 
         public T SelectedGameData { get; private set; }
@@ -36,6 +37,8 @@ namespace FDK
             if (!ItemContainerDict.ContainsKey(gameData)) { return; }
             var selectable = ItemContainerDict[gameData];
             SelectedGameData = gameData;
+            OnSelectionChanged.Invoke(gameData);
+
             Select(selectable);
         }
 

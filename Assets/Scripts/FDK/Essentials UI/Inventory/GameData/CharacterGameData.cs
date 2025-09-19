@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace FDK.Core.GameData
+﻿namespace FDK.Inventory
 {
     [System.Serializable]
     public class CharacterGameData : BaseItemGameData

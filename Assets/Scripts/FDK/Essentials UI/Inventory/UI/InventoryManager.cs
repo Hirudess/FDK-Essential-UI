@@ -8,6 +8,7 @@ namespace FDK.Inventory
     public struct InventoryHudRef
     {
         public ItemInventoryHud ItemInventoryHud;
+        public ItemDetailUIPanel DetailUIPanel;
     }
 
     public interface IInventoryManager
@@ -19,6 +20,7 @@ namespace FDK.Inventory
     {
         private readonly IPlayerItemInventoryService _playerItemInventoryService;
         private readonly ItemInventoryHud _itemInventoryHud;
+        private readonly ItemDetailUIPanel _itemDetailUIPanel;
         private bool _disposedValue;
 
         [Preserve]
@@ -26,14 +28,21 @@ namespace FDK.Inventory
         {
             _playerItemInventoryService = inventoryService;
             _itemInventoryHud = inventoryHudRef.ItemInventoryHud;
+            _itemDetailUIPanel = inventoryHudRef.DetailUIPanel;
 
             _playerItemInventoryService.OnInventoryUpdated.AddListener(UpdateUI);
+          //  _itemInventoryHud.OnSelectionChanged.AddListener(UpdateUI);
         }
 
         public void UpdateUI()
         {
             var inventory = _playerItemInventoryService.GetAllItems();
             _itemInventoryHud.InitializeUI(inventory);
+        }
+
+        public void UpdateDetail(ItemSlotUIData itemSlotUIData)
+        {
+
         }
 
         public void Start()

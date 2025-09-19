@@ -12,7 +12,7 @@ namespace FDK
 
         public System.Action<T> OnButtonClicked;
 
-        public T GameUIData { get; private set; }
+        public T GameUIData { get; protected set; }
 
         public bool IsSelected => throw new System.NotImplementedException();
 
@@ -29,6 +29,7 @@ namespace FDK
         public void UpdateGameData(T UIData)
         {
             GameUIData = UIData;
+            UpdateUI();
         }
 
         public override void UpdateUI()

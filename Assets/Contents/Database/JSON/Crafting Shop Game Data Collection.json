@@ -1,0 +1,17 @@
+{
+    "Collections": [
+        {
+            "Id": "SD-CRF001-A",
+            "ShopVisualData": {
+                "Name": "Tsubame",
+                "Location": "Miyabi",
+                "Owner": "Kagutsuchi"
+            },
+            "Products": [
+                "SD-RCP001-A",
+                "SD-RCP002-A",
+                "SD-RCP003-A"
+            ]
+        }
+    ]
+}

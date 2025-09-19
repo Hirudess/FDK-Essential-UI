@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FDK.Inventory;
+using UnityEngine;
 
 namespace FDK.Core.GameData
 {

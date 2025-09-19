@@ -1,5 +1,6 @@
 using FDK.Core;
 using FDK.Core.SaveFile;
+using FDK.Crafting;
 using FDK.Dialogue;
 using FDK.GameData;
 using FDK.Inventory;
@@ -24,6 +25,7 @@ public class ProjectRootLifetimeScope : LifetimeScope
         builder.RegisterEntryPoint<PlayerItemInventoryService>(Lifetime.Singleton).As<IPlayerItemInventoryService>();
         builder.RegisterEntryPoint<TransactionSystem>(Lifetime.Singleton).As<ITransactionSystem>();
         builder.RegisterEntryPoint<ShopService>(Lifetime.Singleton).As<IShopService>();
+        builder.RegisterEntryPoint<CraftingService>(Lifetime.Singleton).As<ICraftingService>();
 
         builder.RegisterEntryPoint<DialogueService>(Lifetime.Singleton).As<IDialogueService>();
         builder.RegisterEntryPoint<GlobalNotificationService>(Lifetime.Singleton).As<IGlobalNotificationService>();

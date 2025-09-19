@@ -11,7 +11,7 @@ namespace FDK.Core
             var craftingDict = new Dictionary<string, int>();
             foreach (var data in craftingRecipeData.RequiredItems)
             {
-                craftingDict.Add(data.Item.Id, data.Amount);
+                craftingDict.Add(data.ItemId, data.Amount);
             }
             var transactionData = new CraftingTransactionData(craftingDict);
             return transactionData;

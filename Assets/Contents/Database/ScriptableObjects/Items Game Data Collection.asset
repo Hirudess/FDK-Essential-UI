@@ -69,3 +69,20 @@ MonoBehaviour:
         often found near eternal ice. It is used in potions to resist cold and to
         preserve alchemical ingredients.  '
       Price: 400
+    - Id: SD-ITM011-A
+      Name: Curry
+      Description: A dish made from translucent kelp noodles harvested from the ruins
+        of a flooded metropolis. It is tossed with glowing algae and salty deep-sea
+        crill.
+      Price: 400
+    - Id: SD-ITM012-A
+      Name: Beef Stew
+      Description: A hearty soup made with tough cuts of beast meat softened by hours
+        of cooking with hardy root vegetables. It fuels the nomadic riders of the
+        vast steppes.
+      Price: 400
+    - Id: SD-ITM013-A
+      Name: Miso Ramen
+      Description: Fine, silvery noodles that resemble strands of starlight, served
+        in a chilled, savory broth. They are a delicacy during the twin-moon festivals.
+      Price: 400

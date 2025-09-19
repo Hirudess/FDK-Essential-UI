@@ -3,12 +3,9 @@ using UnityEngine;
 
 namespace FDK.Inventory
 {
-    public class ItemInventoryHud : MonoBehaviour
+    public class ItemInventoryHud : BaseSelectionUIItem<ItemSlotUIData, ItemSlotUIItem>
     {
         [SerializeField]
-        private ItemSlotUIItem _slotPrefab;
-        [SerializeField]
-        private RectTransform _root;
         private Dictionary<string, ItemSlotUIItem> _gameData = new();
 
         public void InitializeUI(Dictionary<string, ItemSlotPlayerData> inventoryDict)
@@ -17,18 +14,19 @@ namespace FDK.Inventory
             {
                 var item = kv.Value;
                 var isExist = _gameData.ContainsKey(kv.Key);
+                var itemUIData = new ItemSlotUIData(null, item.Amount);
+
                 if (isExist)
                 {
                     if (_gameData[kv.Key] == null) continue;
 
                     if (item == null) continue;
-                    _gameData[kv.Key].UpdateUI(item.Amount.ToString());
+                    _gameData[kv.Key].UpdateGameData(itemUIData);
                 }
                 else
                 {
-                    var spawnedUI = Instantiate(_slotPrefab, _root);
-                    spawnedUI.InitializeUI(null, item.Amount.ToString());
-
+                    var spawnedUI = Instantiate(_selectionUIPrefabs, _content);
+                    spawnedUI.Initialize(itemUIData, null);
                     _gameData.Add(kv.Key, spawnedUI);
                 }
             }
