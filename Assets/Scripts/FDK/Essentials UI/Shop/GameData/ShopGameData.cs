@@ -1,5 +1,4 @@
 ﻿using FDK.Core;
-using FDK.UI.Base.Interface;
 using System.Collections.Generic;
 
 namespace FDK.Shop
@@ -12,20 +11,7 @@ namespace FDK.Shop
     }
 
     [System.Serializable]
-    public class ShopUIData : IGameUIData
-    {
-        public ShopVisualData ShopVisualData;
-        public List<string> Products;
-
-        public ShopUIData(ShopGameData shopGameData)
-        {
-            ShopVisualData = shopGameData.ShopVisualData;
-            Products = shopGameData.Products;
-        }
-    }
-
-    [System.Serializable]
-    public class ShopProductUIData : IGameUIData
+    public class ShopProductUIData : ISelectableUIData
     {
         public ShopProductUIData(string id, string name, string desc, int price)
         {
@@ -35,7 +21,7 @@ namespace FDK.Shop
             Price = price;
         }
 
-        public string Id;
+        public string Id { get; private set; }
         public string Name;
         public string Desc;
         public int Price;

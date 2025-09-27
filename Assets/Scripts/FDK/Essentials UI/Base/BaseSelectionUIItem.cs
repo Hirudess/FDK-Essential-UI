@@ -7,7 +7,12 @@ using UnityEngine.Events;
 
 namespace FDK
 {
-    public abstract class BaseSelectionUIItem<T, U> : BaseUIPanel, IBaseSelectableUiItem where T : IGameUIData where U : BaseSelectableUIItem<T>
+    public interface ISelectableUIData : IGameUIData
+    {
+        string Id { get; }
+    }
+
+    public abstract class BaseSelectionUIItem<T, U> : BaseUIPanel, IBaseSelectableUiItem where T : ISelectableUIData where U : BaseSelectableUIItem<T>
     {
         [SerializeField] protected U _selectionUIPrefabs;
         [SerializeField] protected RectTransform _root;

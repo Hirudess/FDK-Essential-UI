@@ -1,14 +1,12 @@
-﻿using FDK.UI.Base.Interface;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace FDK.Inventory
 {
     #region GameUIData
-    public interface IItemSlotUIData : IGameUIData
+    public interface IItemSlotUIData : ISelectableUIData
     {
-        string Id { get; }
         Sprite Sprite { get; }
         int Amount { get; }
     }

@@ -62,10 +62,10 @@ namespace FDK.Crafting
                 }
                 var result = _gameDataCollectionService.ItemCollection.GetItem(recipe.Result);
                 if (result == null) return;
-                craftingShops.Add(new FDKCraftingUIData(result.Name, result.Description, materials));
+                craftingShops.Add(new FDKCraftingUIData(result.Id, result.Name, result.Description, materials));
             }
 
-            _craftingUIPanel.Initialize(craftingShopGameData.ShopVisualData,craftingShops);
+            _craftingUIPanel.Initialize(craftingShopGameData.ShopVisualData, craftingShops);
         }
 
         public void Buy(string id, int amount)

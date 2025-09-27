@@ -1374,7 +1374,8 @@ GameObject:
   - component: {fileID: 179662014}
   - component: {fileID: 179662017}
   - component: {fileID: 179662016}
-  - component: {fileID: 179662015}
+  - component: {fileID: 179662018}
+  - component: {fileID: 179662019}
   m_Layer: 5
   m_Name: Crafting Detail
   m_TagString: Untagged
@@ -1406,22 +1407,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1247.3575, y: 10.47193}
   m_SizeDelta: {x: 603.28, y: 750}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &179662015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179662013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5721a822897255f4f850c7c602be9070, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _materialPrefab: {fileID: 2499576124205999686, guid: 05fd1821f92af9a4294a31304a059f3f, type: 3}
-  _name: {fileID: 2005754357}
-  _description: {fileID: 44647909}
-  _root: {fileID: 709263206}
 --- !u!114 &179662016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,6 +1445,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179662013}
   m_CullTransparentMesh: 1
+--- !u!114 &179662018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179662013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4889a16bf2693448c04ba991109346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 179662019}
+  _image: {fileID: 1115406158}
+  _name: {fileID: 2005754357}
+  _desc: {fileID: 44647909}
+--- !u!225 &179662019
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179662013}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &181983263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,7 +3672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -646, y: -40.856}
+  m_AnchoredPosition: {x: 650, y: -573}
   m_SizeDelta: {x: 425.401, y: 888.785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &972665685
@@ -4727,7 +4740,7 @@ MonoBehaviour:
   - {fileID: 972665683}
   _inventoryHudRef:
     ItemInventoryHud: {fileID: 561873251}
-    DetailUIPanel: {fileID: 0}
+    DetailUIPanel: {fileID: 179662018}
 --- !u!1 &1344274795
 GameObject:
   m_ObjectHideFlags: 0
