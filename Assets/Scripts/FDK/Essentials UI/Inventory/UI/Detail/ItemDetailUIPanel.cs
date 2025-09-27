@@ -14,8 +14,9 @@ namespace FDK.Inventory
 
     public class ItemDetailUIData : IItemDetailUIData
     {
-        public ItemDetailUIData(Sprite sprite, string name, string description)
+        public ItemDetailUIData(string id, Sprite sprite, string name, string description)
         {
+            Id = id;
             Sprite = sprite;
             Name = name;
             Description = description;
@@ -24,6 +25,7 @@ namespace FDK.Inventory
         public Sprite Sprite { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
+        public string Id { get; private set; }
     }
 
 

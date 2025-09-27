@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FDK.GameData;
+using System;
+using System.Collections.Generic;
 using UnityEngine.Scripting;
 using VContainer.Unity;
 
@@ -7,7 +9,7 @@ namespace FDK.Inventory
     [System.Serializable]
     public struct InventoryHudRef
     {
-        public ItemInventoryHud ItemInventoryHud;
+        public ItemSelectionUIItem ItemInventoryHud;
         public ItemDetailUIPanel DetailUIPanel;
     }
 
@@ -19,30 +21,46 @@ namespace FDK.Inventory
     public class InventoryManager : IStartable, IDisposable, IInventoryManager
     {
         private readonly IPlayerItemInventoryService _playerItemInventoryService;
-        private readonly ItemInventoryHud _itemInventoryHud;
+        private readonly IGameDataCollectionService _gameDataCollectionService;
+        private readonly ItemSelectionUIItem _itemSelectionUI;
         private readonly ItemDetailUIPanel _itemDetailUIPanel;
         private bool _disposedValue;
 
         [Preserve]
-        public InventoryManager(IPlayerItemInventoryService inventoryService, InventoryHudRef inventoryHudRef)
+        public InventoryManager(IGameDataCollectionService gameDataCollectionService, IPlayerItemInventoryService inventoryService, InventoryHudRef inventoryHudRef)
         {
             _playerItemInventoryService = inventoryService;
-            _itemInventoryHud = inventoryHudRef.ItemInventoryHud;
+            _gameDataCollectionService = gameDataCollectionService;
+            _itemSelectionUI = inventoryHudRef.ItemInventoryHud;
             _itemDetailUIPanel = inventoryHudRef.DetailUIPanel;
 
             _playerItemInventoryService.OnInventoryUpdated.AddListener(UpdateUI);
-          //  _itemInventoryHud.OnSelectionChanged.AddListener(UpdateUI);
+            _itemSelectionUI.OnSelectionChanged.AddListener(UpdateDetail);
+            UpdateUI();
         }
 
         public void UpdateUI()
         {
             var inventory = _playerItemInventoryService.GetAllItems();
-            _itemInventoryHud.InitializeUI(inventory);
+            var uiData = new List<ItemSlotUIData>();
+            foreach (var item in inventory)
+            {
+                var itemUIData = new ItemSlotUIData(item.Value.Item.Id, null, item.Value.Amount);
+                uiData.Add(itemUIData);
+            }
+            _itemSelectionUI.Initialize(uiData);
         }
 
         public void UpdateDetail(ItemSlotUIData itemSlotUIData)
         {
-
+            var itemSlot = _playerItemInventoryService.GetItem(itemSlotUIData.Id);
+            if (itemSlot == null)
+            {
+                return;
+            }
+            var itemData = _gameDataCollectionService.ItemCollection.GetItem(itemSlotUIData.Id);
+            var detail = new ItemDetailUIData(itemSlotUIData.Id, null, itemData.Name, itemData.Description);
+            _itemDetailUIPanel.Initialize(detail);
         }
 
         public void Start()

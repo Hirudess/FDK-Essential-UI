@@ -1,5 +1,4 @@
-﻿using FDK.Core.GameData;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine.Events;
 
 namespace FDK.Inventory

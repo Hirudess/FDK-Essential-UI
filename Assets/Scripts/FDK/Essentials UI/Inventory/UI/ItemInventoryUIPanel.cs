@@ -9,7 +9,7 @@ namespace FDK.Inventory
     public class ItemInventoryUIPanel : BaseUIPanel
     {
         [SerializeField]
-        private ItemInventoryHud _inventorySelection;
+        private ItemSelectionUIItem _inventorySelection;
         [SerializeField]
         private ItemDetailUIPanel _itemDetailUIPanel;
 

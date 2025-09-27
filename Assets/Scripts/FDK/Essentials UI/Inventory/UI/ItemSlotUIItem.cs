@@ -8,20 +8,23 @@ namespace FDK.Inventory
     #region GameUIData
     public interface IItemSlotUIData : IGameUIData
     {
+        string Id { get; }
         Sprite Sprite { get; }
         int Amount { get; }
     }
 
     public class ItemSlotUIData : IItemSlotUIData
     {
-        public ItemSlotUIData(Sprite sprite, int amount)
+        public ItemSlotUIData(string id, Sprite sprite, int amount)
         {
+            Id = id;
             Sprite = sprite;
             Amount = amount;
         }
 
-        public Sprite Sprite { get; }
-        public int Amount { get; }
+        public Sprite Sprite { get; private set; }
+        public int Amount { get; private set; }
+        public string Id { get; private set; }
     }
     #endregion
 
