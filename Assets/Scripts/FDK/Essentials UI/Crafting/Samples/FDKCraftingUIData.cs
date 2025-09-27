@@ -3,18 +3,25 @@ using System.Collections.Generic;
 
 namespace FDK.GameData
 {
-    public class FDKCraftingUIData : IGameUIData
+    public interface ICraftingUIData : IGameUIData
     {
-        public string Name;
-        public string Description;
+        string Name { get; }
+        string Description { get; }
+        List<FDKMaterialUIData> Materials { get; }
+    }
 
-        public List<FDKMaterialUIData> MaterialData;
+    public class FDKCraftingUIData : ICraftingUIData
+    {
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+
+        public List<FDKMaterialUIData> Materials { get; private set; }
 
         public FDKCraftingUIData(string name, string description, List<FDKMaterialUIData> materialData)
         {
             Name = name;
             Description = description;
-            MaterialData = materialData;
+            Materials = materialData;
         }
     }
 

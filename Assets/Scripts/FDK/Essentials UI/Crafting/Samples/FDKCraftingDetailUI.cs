@@ -15,9 +15,9 @@ namespace FDK.Crafting
 
         public List<FDKCraftingMaterialUI> MaterialContainers { get; private set; } = new();
 
-        public FDKCraftingUIData GameData { get; private set; }
+        public ICraftingUIData GameData { get; private set; }
 
-        public void SetGameData(FDKCraftingUIData gameData)
+        public void SetGameData(ICraftingUIData gameData)
         {
             GameData = gameData;
         }
@@ -35,7 +35,7 @@ namespace FDK.Crafting
             }
 
             var idx = 0;
-            foreach (var material in GameData.MaterialData)
+            foreach (var material in GameData.Materials)
             {
                 if (idx < MaterialContainers.Count)
                 {
