@@ -10,12 +10,14 @@ namespace FDK.Core.SaveFile
         public string SaveVersion;
         public PlayerInfo PlayerInfo;
         public Inventory Inventory;
+        public PlayerEquip PlayerEquip;
 
         public PlayerSaveData()
         {
             SaveVersion = "0.0.0.0.1";
             PlayerInfo = new PlayerInfo();
             Inventory = new Inventory();
+            PlayerEquip = new PlayerEquip();
         }
     }
 
@@ -32,6 +34,23 @@ namespace FDK.Core.SaveFile
             PlayerName = "Save File";
             PlaytimeHours = 0;
             LastSave = null;
+        }
+    }
+
+    [Serializable]
+    public class PlayerEquip
+    {
+        public string WeaponId;
+        public string ArmorId;
+
+        public void EquipWeapon(string weaponId)
+        {
+            WeaponId = weaponId;
+        }
+
+        public void EquipArmor(string armorId)
+        {
+            ArmorId = armorId;
         }
     }
 

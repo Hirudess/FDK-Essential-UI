@@ -16,6 +16,11 @@ namespace FDK
 
         public bool IsSelected => throw new System.NotImplementedException();
 
+
+        private void Awake()
+        {
+            
+        }
         public void Initialize(T uiData, System.Action<T> onClick)
         {
             GameUIData = uiData;
